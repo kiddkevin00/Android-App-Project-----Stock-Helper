@@ -1,3 +1,5 @@
+package com.example.cloudtools;
+
 /*
  * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
