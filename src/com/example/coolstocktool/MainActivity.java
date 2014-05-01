@@ -1,15 +1,21 @@
 package com.example.coolstocktool;
 
+import java.util.concurrent.ExecutionException;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.os.Build;
+
+import com.example.cloudtools.*;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -23,6 +29,17 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        
+        TextView tv = (TextView) findViewById(R.id.textView1);
+		try {
+			tv.setText(new S3Task().execute().get());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 
@@ -60,6 +77,16 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
+    }
+    
+    class S3Task extends AsyncTask<Void,Void,String> {
+
+		@Override
+		protected String doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			s3Init si = new s3Init();
+    		return si.init();
+		}
     }
 
 }
