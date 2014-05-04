@@ -29,26 +29,26 @@ import android.os.Build;
 import android.provider.ContactsContract.Contacts.Data;
 
 public class SecondAdapter extends ArrayAdapter<DataFrom> implements OnClickListener{
-	
-	
-	protected boolean allow;
+
+
+	//protected boolean allow;
 	public View row;
 	public Activity context;
 	public ArrayList<DataFrom> data;
-	
+
 	class LayoutForm {
 		public ImageView imageView;
 		public  TextView text;
 		public String imageUri;
-		
+
 	}
-	
+
 
 	//constructor
 	public SecondAdapter(Context context, int resource, List<DataFrom> objects) {
 		super(context, resource, objects);
 		Log.d("***", "hello0");
-		allow = true;
+		//allow = true;
 		this.context = (Activity) context;
 		// get data
 		data = (ArrayList<DataFrom>) objects;
@@ -72,28 +72,27 @@ public class SecondAdapter extends ArrayAdapter<DataFrom> implements OnClickList
 		}
 		Log.d("***", "hello4");
 		item = (LayoutForm) row.getTag();
-				
-		if (allow) {
-			Log.d("***", "hello5");
-			String text = data.get(position).stockName;
-			item.text.setText(text);
-		}
+
+		Log.d("***", "hello5");
+		String text = data.get(position).stockName;
+		item.text.setText(text);
+
 		Log.d("***", "hello6");
-		
+
 		return row;
-		
+
 	}
-	
+
 	@Override
 	public void onClick(View v) {
-//		String uri = ((LayoutForm)v.getTag()).imageUri;
-//		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(uri));
-//		context.startActivity(intent);
-		
-		
-	}
-		
+		//		String uri = ((LayoutForm)v.getTag()).imageUri;
+		//		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(uri));
+		//		context.startActivity(intent);
 
-		
+
+	}
+
+
+
 
 }
