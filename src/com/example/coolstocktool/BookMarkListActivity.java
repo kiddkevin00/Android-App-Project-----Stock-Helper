@@ -33,7 +33,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.bookmark_list_activity);
+		setContentView(R.layout.activity_bookmark_list);
 
 		context = this;
 
@@ -50,7 +50,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 		data.add(bucket);
 		Log.d("***", "Heyyyy");
 
-		adapter = new BookMarkAdapter(context, R.layout.bookmark_adapter,
+		adapter = new BookMarkAdapter(context, R.layout.adapter_bookmark,
 				data);
 		_listView = (ListView) findViewById(R.id.listView1);
 		_listView.setAdapter((ListAdapter) adapter);

@@ -16,7 +16,7 @@ public class ChatRoomActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chat_room_activity);
+        setContentView(R.layout.activity_chat_room);
 
         
     }

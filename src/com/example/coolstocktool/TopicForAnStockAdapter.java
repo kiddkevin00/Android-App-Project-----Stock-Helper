@@ -5,12 +5,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class TopicForAnStock extends ActionBarActivity {
+public class TopicForAnStockAdapter extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_topic_for_an_stock);
+		setContentView(R.layout.activity_topic_for_an_stock_adapter);
 
 	}
 
@@ -18,7 +18,7 @@ public class TopicForAnStock extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.topic_for_an_stock, menu);
+		getMenuInflater().inflate(R.menu.topic_for_an_stock_adapter, menu);
 		return true;
 	}
 

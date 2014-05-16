@@ -32,8 +32,12 @@
             android:label="@string/title_activity_second_adapter" >
         </activity>
         <activity
-            android:name="com.example.coolstocktool.TopicForAnStock"
+            android:name="com.example.coolstocktool.TopicForAnStockActivity"
             android:label="@string/title_activity_topic_for_an_stock" >
+        </activity>
+        <activity
+            android:name="com.example.coolstocktool.TopicForAnStockAdapter"
+            android:label="@string/title_activity_topic_for_an_stock_adapter" >
         </activity>
     </application>
 </manifest>
