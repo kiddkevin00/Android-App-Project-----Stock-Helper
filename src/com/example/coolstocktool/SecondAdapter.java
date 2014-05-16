@@ -3,52 +3,40 @@ package com.example.coolstocktool;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.coolstocktool.SecondActivity.DataFrom;
-
-
-import android.R.string;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.os.Build;
-import android.provider.ContactsContract.Contacts.Data;
 
-public class SecondAdapter extends ArrayAdapter<DataFrom> implements OnClickListener{
+import com.example.coolstocktool.SecondActivity.DataFrom;
 
+public class SecondAdapter extends ArrayAdapter<DataFrom> implements
+		OnClickListener {
 
-	//protected boolean allow;
+	// protected boolean allow;
 	public View row;
 	public Activity context;
 	public ArrayList<DataFrom> data;
 
 	class LayoutForm {
 		public ImageView imageView;
-		public  TextView text;
+		public TextView text;
 		public String imageUri;
 
 	}
 
-
-	//constructor
+	// constructor
 	public SecondAdapter(Context context, int resource, List<DataFrom> objects) {
 		super(context, resource, objects);
 		Log.d("***", "hello0");
-		//allow = true;
+		// allow = true;
 		this.context = (Activity) context;
 		// get data
 		data = (ArrayList<DataFrom>) objects;
@@ -85,14 +73,11 @@ public class SecondAdapter extends ArrayAdapter<DataFrom> implements OnClickList
 
 	@Override
 	public void onClick(View v) {
-		//		String uri = ((LayoutForm)v.getTag()).imageUri;
-		//		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(uri));
-		//		context.startActivity(intent);
-
+		Intent intent = new Intent();
+		intent.putExtra("sms", "from main act");
+		intent.setClass(context, ThirdActivity.class);
+		context.startActivity(intent);
 
 	}
-
-
-
 
 }
