@@ -6,15 +6,19 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class SecondActivity extends ActionBarActivity {
 
-	// public SecondAdapter adapter;
-	public ListView listView;
+	public Button _searchThread;
+	public ListView _listView;
 	private Context context;
 	public SecondAdapter adapter;
+
 	public ArrayList<DataFrom> data;
 
 	public class DataFrom {
@@ -48,9 +52,17 @@ public class SecondActivity extends ActionBarActivity {
 
 		adapter = new SecondAdapter(context, R.layout.activity_second_adapter,
 				data);
-		listView = (ListView) findViewById(R.id.listView1);
-		listView.setAdapter((ListAdapter) adapter);
+		_listView = (ListView) findViewById(R.id.listView1);
+		_listView.setAdapter((ListAdapter) adapter);
 
+		_searchThread = (Button) findViewById(R.id.searchThread);
+		_searchThread.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
-
 }

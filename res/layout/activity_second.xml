@@ -5,13 +5,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.coolstocktool.SecondActivity"
     tools:ignore="MergeRootFrame" >
-
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
     </ListView>
-
+    <Button
+        android:id="@+id/searchThread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="18dp"
+        android:text="Find Topic" />
 </RelativeLayout>
