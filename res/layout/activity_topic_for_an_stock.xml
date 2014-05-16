@@ -5,4 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.coolstocktool.TopicForAnStockActivity"
     tools:ignore="MergeRootFrame" >
+    <ListView
+        android:id="@+id/threadList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </ListView>
 </RelativeLayout>

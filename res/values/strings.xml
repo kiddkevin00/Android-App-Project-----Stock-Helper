@@ -8,4 +8,5 @@
     <string name="title_activity_second_adapter">SecondAdapter</string>
     <string name="title_activity_topic_for_an_stock">TopicForAnStock</string>
     <string name="title_activity_topic_for_an_stock_adapter">TopicForAnStockAdapter</string>
+    <string name="title_activity_search_stock">SearchStockActivity</string>
 </resources>

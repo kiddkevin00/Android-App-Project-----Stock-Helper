@@ -3,6 +3,7 @@ package com.example.coolstocktool;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -50,8 +51,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 		data.add(bucket);
 		Log.d("***", "Heyyyy");
 
-		adapter = new BookMarkAdapter(context, R.layout.adapter_bookmark,
-				data);
+		adapter = new BookMarkAdapter(context, R.layout.adapter_bookmark, data);
 		_listView = (ListView) findViewById(R.id.listView1);
 		_listView.setAdapter((ListAdapter) adapter);
 
@@ -61,7 +61,10 @@ public class BookMarkListActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				Intent intent = new Intent();
+				intent.setClass(context, SearchStockActivity.class);
+				intent.putExtra("meg2", "from bookmark acitivity");
+				startActivity(intent);
 			}
 		});
 	}

@@ -74,8 +74,8 @@ public class BookMarkAdapter extends ArrayAdapter<DataFrom> implements
 	@Override
 	public void onClick(View v) {
 		Intent intent = new Intent();
-		intent.putExtra("sms", "from main act");
-		intent.setClass(context, ChatRoomActivity.class);
+		intent.putExtra("sms", "from bookmark activity");
+		intent.setClass(context, TopicForAnStockActivity.class);
 		context.startActivity(intent);
 
 	}
