@@ -3,7 +3,7 @@
     android:id="@+id/activity_third"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.coolstocktool.ThirdActivity"
+    tools:context="com.example.coolstocktool.ChatRoomActivity"
     tools:ignore="MergeRootFrame" >
 
     <ImageView

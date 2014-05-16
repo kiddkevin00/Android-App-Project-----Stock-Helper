@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.example.coolstocktool.BookMarkListActivity.DataFrom;
 
-public class SecondAdapter extends ArrayAdapter<DataFrom> implements
+public class BookMarkAdapter extends ArrayAdapter<DataFrom> implements
 		OnClickListener {
 
 	// protected boolean allow;
@@ -33,7 +33,7 @@ public class SecondAdapter extends ArrayAdapter<DataFrom> implements
 	}
 
 	// constructor
-	public SecondAdapter(Context context, int resource, List<DataFrom> objects) {
+	public BookMarkAdapter(Context context, int resource, List<DataFrom> objects) {
 		super(context, resource, objects);
 		Log.d("***", "hello0");
 		// allow = true;
@@ -51,7 +51,7 @@ public class SecondAdapter extends ArrayAdapter<DataFrom> implements
 		if (row == null) {
 			Log.d("***", "hello3");
 			LayoutInflater inflater = context.getLayoutInflater();
-			row = inflater.inflate(R.layout.activity_second_adapter, null);
+			row = inflater.inflate(R.layout.bookmark_adapter, null);
 			item = new LayoutForm();
 			item.imageView = (ImageView) row.findViewById(R.id.imageView1);
 			item.text = (TextView) row.findViewById(R.id.textView1);
@@ -75,7 +75,7 @@ public class SecondAdapter extends ArrayAdapter<DataFrom> implements
 	public void onClick(View v) {
 		Intent intent = new Intent();
 		intent.putExtra("sms", "from main act");
-		intent.setClass(context, ThirdActivity.class);
+		intent.setClass(context, ChatRoomActivity.class);
 		context.startActivity(intent);
 
 	}

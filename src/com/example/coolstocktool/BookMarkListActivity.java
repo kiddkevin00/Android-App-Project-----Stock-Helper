@@ -17,7 +17,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 	public Button _searchThread;
 	public ListView _listView;
 	private Context context;
-	public SecondAdapter adapter;
+	public BookMarkAdapter adapter;
 
 	public ArrayList<DataFrom> data;
 
@@ -50,7 +50,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 		data.add(bucket);
 		Log.d("***", "Heyyyy");
 
-		adapter = new SecondAdapter(context, R.layout.activity_second_adapter,
+		adapter = new BookMarkAdapter(context, R.layout.bookmark_adapter,
 				data);
 		_listView = (ListView) findViewById(R.id.listView1);
 		_listView.setAdapter((ListAdapter) adapter);
