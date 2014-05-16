@@ -51,7 +51,7 @@ public class BookMarkAdapter extends ArrayAdapter<DataFrom> implements
 		if (row == null) {
 			Log.d("***", "hello3");
 			LayoutInflater inflater = context.getLayoutInflater();
-			row = inflater.inflate(R.layout.adapter_bookmark, null);
+			row = inflater.inflate(R.layout.adapter_bm, null);
 			item = new LayoutForm();
 			item.imageView = (ImageView) row.findViewById(R.id.imageView1);
 			item.text = (TextView) row.findViewById(R.id.textView1);

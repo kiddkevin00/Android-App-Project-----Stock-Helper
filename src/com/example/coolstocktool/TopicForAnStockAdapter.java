@@ -1,37 +1,77 @@
 package com.example.coolstocktool;
 
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public class TopicForAnStockAdapter extends ActionBarActivity {
+import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.adapter_topic_for_an_stock);
+import com.example.coolstocktool.TopicForAnStockActivity.DataForm2;
 
+public class TopicForAnStockAdapter extends ArrayAdapter<DataForm2> implements
+		OnClickListener {
+
+	class LayoutForm2 {
+		TextView name;
+	}
+
+	public ArrayList<DataForm2> data;
+
+	public View _row;
+	public Activity _context;
+
+	public TopicForAnStockAdapter(Context context, int resource,
+			List<DataForm2> objects) {
+		// TODO Auto-generated constructor stub
+		super(context, resource, objects);
+		Log.d("***", "This is Topic Adapter Constructor");
+		// allow = true;
+		this._context = (Activity) context;
+		// get data
+		data = (ArrayList<DataForm2>) objects;
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.topic_for_an_stock_adapter, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+	public View getView(int position, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		// super.getView(position, convertView, parent);
+		Log.d("***", "hello1");
+		_row = convertView;
+		LayoutForm2 item;
+		Log.d("***", "hello2");
+		if (_row == null) {
+			Log.d("***", "hello30");
+			LayoutInflater inflater = _context.getLayoutInflater();
+			_row = inflater.inflate(R.layout.adapter_topic_for_an_stock, null);
+			item = new LayoutForm2();
+			// item.imageView = (ImageView) _row.findViewById(R.id.imageView1);
+			item.name = (TextView) _row.findViewById(R.id.textView1);
+			_row.setTag(item);
+			_row.setOnClickListener(this);
 		}
-		return super.onOptionsItemSelected(item);
+		Log.d("***", "hello40");
+		item = (LayoutForm2) _row.getTag();
+
+		Log.d("***", "hello50");
+		String text = data.get(position).name;
+		item.name.setText(text);
+
+		Log.d("***", "hello60");
+
+		return _row;
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

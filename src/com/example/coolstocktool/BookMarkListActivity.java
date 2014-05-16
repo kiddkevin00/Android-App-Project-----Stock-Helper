@@ -51,7 +51,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 		data.add(bucket);
 		Log.d("***", "Heyyyy");
 
-		adapter = new BookMarkAdapter(context, R.layout.adapter_bookmark, data);
+		adapter = new BookMarkAdapter(context, R.layout.adapter_bm, data);
 		_listView = (ListView) findViewById(R.id.listView1);
 		_listView.setAdapter((ListAdapter) adapter);
 

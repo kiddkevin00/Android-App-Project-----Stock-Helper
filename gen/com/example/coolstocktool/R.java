@@ -1099,7 +1099,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050055;
+        public static final int action_settings=0x7f050054;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int activity_main=0x7f050046;
         public static final int activity_search_stock=0x7f05004c;
@@ -1126,7 +1126,6 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int imageView1=0x7f050052;
         public static final int item=0x7f050051;
-        public static final int item2=0x7f050054;
         public static final int layout1=0x7f050053;
         public static final int listMode=0x7f050001;
         public static final int listView1=0x7f05003d;
@@ -1231,7 +1230,7 @@ containing a value of this type.
         public static final int activity_main=0x7f03001a;
         public static final int activity_search_stock=0x7f03001b;
         public static final int activity_topic_for_an_stock=0x7f03001c;
-        public static final int adapter_bookmark=0x7f03001d;
+        public static final int adapter_bm=0x7f03001d;
         public static final int adapter_topic_for_an_stock=0x7f03001e;
         public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
