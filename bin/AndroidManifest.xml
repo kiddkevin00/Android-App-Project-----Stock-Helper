@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.coolstocktool.SecondActivity"
+            android:name="com.example.coolstocktool.BookMarkListActivity"
             android:label="@string/title_activity_second" >
         </activity>
         <activity

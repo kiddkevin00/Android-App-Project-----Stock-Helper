@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent toBM = new Intent();
-				toBM.setClass(context, SecondActivity.class);
+				toBM.setClass(context, BookMarkListActivity.class);
 				startActivity(toBM);
 			}
 		});

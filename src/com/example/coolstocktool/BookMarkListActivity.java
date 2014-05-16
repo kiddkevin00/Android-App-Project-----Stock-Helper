@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-public class SecondActivity extends ActionBarActivity {
+public class BookMarkListActivity extends ActionBarActivity {
 
 	public Button _searchThread;
 	public ListView _listView;

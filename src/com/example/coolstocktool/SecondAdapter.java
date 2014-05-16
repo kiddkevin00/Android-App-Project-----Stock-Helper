@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.coolstocktool.SecondActivity.DataFrom;
+import com.example.coolstocktool.BookMarkListActivity.DataFrom;
 
 public class SecondAdapter extends ArrayAdapter<DataFrom> implements
 		OnClickListener {
