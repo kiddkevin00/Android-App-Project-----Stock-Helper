@@ -33,7 +33,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_second);
+		setContentView(R.layout.bookmark_list_activity);
 
 		context = this;
 
