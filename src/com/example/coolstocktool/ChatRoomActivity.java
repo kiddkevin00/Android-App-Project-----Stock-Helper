@@ -35,6 +35,8 @@ public class ChatRoomActivity extends ActionBarActivity {
 	public int reply_count;
 	public String topic_name;
 	public int floor;
+	public String email;
+	public String password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,10 @@ public class ChatRoomActivity extends ActionBarActivity {
 		Log.d("***", "chatRoom: " + title + text + date + thread_id
 				+ user_created + reply_count + topic_name + floor);
 		tb = new ThreadBody(title, text, user_created, thread_id, topic_name);
+
+		email = intent.getStringExtra("email");
+		password = intent.getStringExtra("password");
+		Log.d("***", "Account in Chat Room : " + email + password);
 
 		chatRoomAsync = new ChatRoomAsyncTask();
 		chatRoomAsync.execute(tb);

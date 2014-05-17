@@ -33,6 +33,8 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 	}
 
 	public ArrayList<ThreadBody> data;
+	// public String email;
+	// public String password;
 
 	public View _row;
 	public Activity _context;
@@ -108,6 +110,9 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 		intent.putExtra("reply_count", reply_count2);
 		intent.putExtra("topic_name", topic_name2);
 		intent.putExtra("floor", floor2);
+		// hard-code user's account
+		intent.putExtra("email", "123");
+		intent.putExtra("password", "123");
 		_context.startActivity(intent);
 
 	}
