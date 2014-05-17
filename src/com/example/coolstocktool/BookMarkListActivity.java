@@ -102,10 +102,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 						"User retrieve : "
 								+ usr.retrieveUser(v[0].get(0), v[0].get(1)));
 
-				Log.d("***", "heelloo");
-
 				if (usr.retrieveUser(v[0].get(0), v[0].get(1)) != null) {
-					Log.d("***", "hellooo");
 					usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
 
 					if (usr.listFavorites() != null) {
@@ -123,7 +120,6 @@ public class BookMarkListActivity extends ActionBarActivity {
 					Log.d("***", "user's BM list: " + usrBmList);
 
 				} else {
-					Log.d("***", "hellooo1");
 					usr = usr.retrieveUser("123", "123");
 					if (usr.listFavorites() != null) {
 						Log.d("***",

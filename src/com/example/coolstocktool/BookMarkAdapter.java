@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,12 +39,11 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 		this._context = (Activity) context;
 		// get data
 		data = (ArrayList<String>) objects;
-		// Log.d("***", "data from bookmark: " + data.get(0));
+		Log.d("***", "data from bookmark: " + data.get(0));
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Log.d("***", "hello001");
 		row = convertView;
 		LayoutForm item;
 		if (row == null) {
@@ -56,9 +56,9 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 		}
 		item = (LayoutForm) row.getTag();
 
-		// String stockName = data.get(position);
-		// Log.d("***", "text: " + stockName);
-		// item._text.setText(stockName);
+		String stockName = data.get(position);
+		Log.d("***", "text: " + stockName);
+		item._text.setText(stockName);
 
 		return row;
 
@@ -70,10 +70,10 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 		String stockName = ((LayoutForm) v.getTag())._text.getText().toString();
 		Log.d("***", "Clicked Stock Name: " + stockName);
 
-		// Intent intent = new Intent();
-		// intent.putExtra("stockName", stockName);
-		// intent.setClass(_context, StockDetailActivity.class);
-		// _context.startActivity(intent);
+		Intent intent = new Intent();
+		intent.putExtra("stockName", stockName);
+		intent.setClass(_context, StockDetailActivity.class);
+		_context.startActivity(intent);
 
 	}
 }
