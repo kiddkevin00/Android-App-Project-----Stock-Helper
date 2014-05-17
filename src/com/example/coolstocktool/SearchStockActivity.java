@@ -29,7 +29,7 @@ public class SearchStockActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-				intent.setClass(context, TopicForAnStockActivity.class);
+				intent.setClass(context, StockDetailActivity.class);
 				intent.putExtra("msg3", "from search stock activity");
 				startActivity(intent);
 			}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,29 +14,29 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.coolstocktool.TopicForAnStockActivity.DataForm2;
+import com.stockcloud.ThreadBody;
 
-public class TopicForAnStockAdapter extends ArrayAdapter<DataForm2> implements
+public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 		OnClickListener {
 
 	class LayoutForm2 {
 		TextView name;
 	}
 
-	public ArrayList<DataForm2> data;
+	public ArrayList<ThreadBody> data;
 
 	public View _row;
 	public Activity _context;
 
 	public TopicForAnStockAdapter(Context context, int resource,
-			List<DataForm2> objects) {
-		// TODO Auto-generated constructor stub
+			List<ThreadBody> objects) {
 		super(context, resource, objects);
+		// TODO Auto-generated constructor stub
 		Log.d("***", "This is Topic Adapter Constructor");
 		// allow = true;
 		this._context = (Activity) context;
 		// get data
-		data = (ArrayList<DataForm2>) objects;
+		data = (ArrayList<ThreadBody>) objects;
 	}
 
 	@Override
@@ -59,11 +60,8 @@ public class TopicForAnStockAdapter extends ArrayAdapter<DataForm2> implements
 		Log.d("***", "hello40");
 		item = (LayoutForm2) _row.getTag();
 
-		Log.d("***", "hello50");
-		String text = data.get(position).name;
-		item.name.setText(text);
-
-		Log.d("***", "hello60");
+		int text = data.get(position).reply_count;
+		item.name.setText(Integer.toString(text));
 
 		return _row;
 	}
@@ -71,6 +69,10 @@ public class TopicForAnStockAdapter extends ArrayAdapter<DataForm2> implements
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		Intent intent = new Intent();
+		intent.putExtra("sms", "from topic activity");
+		intent.setClass(_context, ChatRoomActivity.class);
+		_context.startActivity(intent);
 
 	}
 

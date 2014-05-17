@@ -9,4 +9,5 @@
     <string name="title_activity_topic_for_an_stock">TopicForAnStock</string>
     <string name="title_activity_topic_for_an_stock_adapter">TopicForAnStockAdapter</string>
     <string name="title_activity_search_stock">SearchStockActivity</string>
+    <string name="title_activity_stock_detail">StockDetailActivity</string>
 </resources>

@@ -15,15 +15,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.coolstocktool.BookMarkListActivity.DataFrom;
-
-public class BookMarkAdapter extends ArrayAdapter<DataFrom> implements
+public class BookMarkAdapter extends ArrayAdapter<String> implements
 		OnClickListener {
 
 	// protected boolean allow;
 	public View row;
-	public Activity context;
-	public ArrayList<DataFrom> data;
+	public Activity _context;
+	public ArrayList<String> data;
 
 	class LayoutForm {
 		public ImageView imageView;
@@ -33,24 +31,25 @@ public class BookMarkAdapter extends ArrayAdapter<DataFrom> implements
 	}
 
 	// constructor
-	public BookMarkAdapter(Context context, int resource, List<DataFrom> objects) {
+	public BookMarkAdapter(Context context, int resource, List<String> objects) {
 		super(context, resource, objects);
-		Log.d("***", "hello0");
+		Log.d("***", "hello000");
 		// allow = true;
-		this.context = (Activity) context;
+		this._context = (Activity) context;
 		// get data
-		data = (ArrayList<DataFrom>) objects;
+		data = (ArrayList<String>) objects;
+		Log.d("***", "data from bookmark: " + data.get(0));
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Log.d("***", "hello1");
+		Log.d("***", "hello001");
 		row = convertView;
 		LayoutForm item;
 		Log.d("***", "hello2");
 		if (row == null) {
 			Log.d("***", "hello3");
-			LayoutInflater inflater = context.getLayoutInflater();
+			LayoutInflater inflater = _context.getLayoutInflater();
 			row = inflater.inflate(R.layout.adapter_bm, null);
 			item = new LayoutForm();
 			item.imageView = (ImageView) row.findViewById(R.id.imageView1);
@@ -62,7 +61,8 @@ public class BookMarkAdapter extends ArrayAdapter<DataFrom> implements
 		item = (LayoutForm) row.getTag();
 
 		Log.d("***", "hello5");
-		String text = data.get(position).stockName;
+		String text = data.get(position);
+		Log.d("***", "text: " + text);
 		item.text.setText(text);
 
 		Log.d("***", "hello6");
@@ -74,10 +74,9 @@ public class BookMarkAdapter extends ArrayAdapter<DataFrom> implements
 	@Override
 	public void onClick(View v) {
 		Intent intent = new Intent();
-		intent.putExtra("sms", "from bookmark activity");
-		intent.setClass(context, TopicForAnStockActivity.class);
-		context.startActivity(intent);
+		intent.putExtra("stockName", "");
+		intent.setClass(_context, StockDetailActivity.class);
+		_context.startActivity(intent);
 
 	}
-
 }
