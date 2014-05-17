@@ -20,6 +20,8 @@ public class StockDetailActivity extends ActionBarActivity {
 	public TextView _stockName;
 
 	public String stockName;
+	public String email;
+	public String password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +29,16 @@ public class StockDetailActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_stock_detail);
 
 		_context = this;
-
 		_stockName = (TextView) findViewById(R.id.stockName);
 		_findThread = (Button) findViewById(R.id.findThread);
 		_addBookmark = (Button) findViewById(R.id.addBookmark);
 
 		Intent intent = getIntent();
 		stockName = intent.getStringExtra("stockName");
-		Log.d("***", "Stock Name : " + stockName);
+		email = intent.getStringExtra("email");
+		password = intent.getStringExtra("password");
+		Log.d("***", "Account and Stock Name in Detail: " + stockName + email
+				+ password);
 
 		_addBookmark.setOnClickListener(new OnClickListener() {
 
@@ -53,8 +57,10 @@ public class StockDetailActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent thrIntent = new Intent();
-				thrIntent.setClass(_context, TopicForAnStockActivity.class);
 				thrIntent.putExtra("stockName", stockName);
+				thrIntent.putExtra("email", email);
+				thrIntent.putExtra("password", password);
+				thrIntent.setClass(_context, TopicForAnStockActivity.class);
 				startActivity(thrIntent);
 
 			}

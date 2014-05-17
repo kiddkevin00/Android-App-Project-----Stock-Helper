@@ -64,7 +64,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 		email = intent.getStringExtra("email");
 		password = intent.getStringExtra("password");
 		Log.d("***",
-				"Account info: " + intent.getStringExtra("email")
+				"Account BM: " + intent.getStringExtra("email")
 						+ intent.getStringExtra("password"));
 		bookmarkAsync = new BookmarkAsyncTask();
 		List<String> params = new ArrayList<String>();
@@ -86,6 +86,15 @@ public class BookMarkListActivity extends ActionBarActivity {
 			}
 		});
 	}
+
+	// public static void help(String stockName, Context context) {
+	// Intent intent = new Intent();
+	// intent.putExtra("stockName", stockName);
+	// intent.putExtra("email", email);
+	// intent.putExtra("password", password);
+	// intent.setClass(context, StockDetailActivity.class);
+	// context.startActivity(intent);
+	// }
 
 	// for testing
 	private class BookmarkAsyncTask extends

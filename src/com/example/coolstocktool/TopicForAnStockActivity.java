@@ -1,6 +1,5 @@
 package com.example.coolstocktool;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.R.integer;
@@ -34,23 +33,29 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 	}
 
 	public ListView _threadList;
-	public Context context;
-	public TopicForAnStockAdapter adapter;
+	public Context _context;
+	public TopicForAnStockAdapter _adapter;
 
-	public ArrayList<DataForm2> data;
+	// public ArrayList<DataForm2> data;
 	public TopicAsyncTask topicAsync;
 	public String stockName;
+	public String email;
+	public String password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_topic_for_an_stock);
 
-		context = this;
+		_context = this;
 
 		Intent intent = getIntent();
 		stockName = intent.getStringExtra("stockName");
-		Log.d("***", "Stock Name for the following topics : " + stockName);
+		email = intent.getStringExtra("email");
+		password = intent.getStringExtra("password");
+
+		Log.d("***", "Account and Stock Name for the following topics : "
+				+ stockName + email + password);
 
 		// hard-code input data
 		// data = new ArrayList<DataForm2>();
@@ -112,14 +117,14 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 			if (result != null) {
 				Log.d("*****", "onpost result3: " + result.size());
 				// set adapter
-				adapter = new TopicForAnStockAdapter(context,
+				_adapter = new TopicForAnStockAdapter(_context,
 						R.layout.adapter_topic_for_an_stock, result);
 				_threadList = (ListView) findViewById(R.id.threadList);
-				_threadList.setAdapter(adapter);
+				_threadList.setAdapter(_adapter);
 			} else {
 				// system alert dialog
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-						context);
+						_context);
 				alertDialogBuilder.setTitle("Sorry!!");
 				alertDialogBuilder.setMessage("Nothing Found!!!")
 						.setPositiveButton("Try Another Name",

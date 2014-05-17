@@ -33,11 +33,11 @@ public class SearchStockActivity extends ActionBarActivity {
 
 		_searchStockName.setText("APPLEINC");
 
-		Intent intent = getIntent();
-		email = intent.getStringExtra("email");
-		password = intent.getStringExtra("password");
+		Intent intent2 = getIntent();
+		email = intent2.getStringExtra("email");
+		password = intent2.getStringExtra("password");
 
-		Log.d("***", "Acc in search Sto : " + email + password);
+		Log.d("***", "Account in search Stock : " + email + password);
 
 		_searchStockButton.setOnClickListener(new OnClickListener() {
 
@@ -49,6 +49,8 @@ public class SearchStockActivity extends ActionBarActivity {
 				Intent intent = new Intent();
 				intent.setClass(_context, StockDetailActivity.class);
 				intent.putExtra("stockName", stockName);
+				intent.putExtra("email", email);
+				intent.putExtra("password", password);
 				startActivity(intent);
 			}
 		});

@@ -34,7 +34,6 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 	// constructor
 	public BookMarkAdapter(Context context, int resource, List<String> objects) {
 		super(context, resource, objects);
-		Log.d("***", "hello000");
 		// allow = true;
 		this._context = (Activity) context;
 		// get data
@@ -70,8 +69,12 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 		String stockName = ((LayoutForm) v.getTag())._text.getText().toString();
 		Log.d("***", "Clicked Stock Name: " + stockName);
 
+		// BookMarkListActivity.help(stockName, _context);
+
 		Intent intent = new Intent();
 		intent.putExtra("stockName", stockName);
+		intent.putExtra("email", "123");
+		intent.putExtra("password", "123");
 		intent.setClass(_context, StockDetailActivity.class);
 		_context.startActivity(intent);
 
