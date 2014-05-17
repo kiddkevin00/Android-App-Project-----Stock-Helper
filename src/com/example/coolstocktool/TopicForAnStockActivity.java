@@ -23,7 +23,13 @@ import com.stockcloud.ThreadBody;
 public class TopicForAnStockActivity extends ActionBarActivity {
 
 	public class DataForm2 {
-		int number;
+		// String title;
+		// String text;
+		// long date;
+		// int thread_id;
+		// String user_created;
+		// int reply_count;
+		// String topic_name;
 
 	}
 
@@ -47,17 +53,17 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 		Log.d("***", "Stock Name for the following topics : " + stockName);
 
 		// hard-code input data
-		data = new ArrayList<DataForm2>();
-		DataForm2 bucket = new DataForm2();
+		// data = new ArrayList<DataForm2>();
+		// DataForm2 bucket = new DataForm2();
 		// for testing back-end
 		// bucket.number = tesTopic.thread_count;
-		bucket.number = 123;
+		// bucket.number = 123;
 		// bucket.ownerName = "Bob";
 		// bucket.describe = "Detail Info";
 		// bucket.dateCreate = "2014";
 		// bucket.stockName = "ASUS";
-		data.add(bucket);
-		Log.d("***", "data : " + data);
+		// data.add(bucket);
+		// Log.d("***", "data : " + data);
 
 		topicAsync = new TopicAsyncTask();
 		topicAsync.execute(stockName);

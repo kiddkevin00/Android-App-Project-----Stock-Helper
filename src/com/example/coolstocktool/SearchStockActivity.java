@@ -19,6 +19,8 @@ public class SearchStockActivity extends ActionBarActivity {
 	public EditText _searchStockName;
 
 	public String stockName;
+	public String email;
+	public String password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,13 @@ public class SearchStockActivity extends ActionBarActivity {
 		_searchStockButton = (Button) findViewById(R.id.searchStock);
 
 		_searchStockName.setText("APPLEINC");
+
+		Intent intent = getIntent();
+		email = intent.getStringExtra("email");
+		password = intent.getStringExtra("password");
+
+		Log.d("***", "Acc in search Sto : " + email + password);
+
 		_searchStockButton.setOnClickListener(new OnClickListener() {
 
 			@Override

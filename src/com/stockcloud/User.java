@@ -36,16 +36,18 @@ public class User {
 	AmazonDynamoDBClient dynamoDB;
 	final String tableName = "stock-users";
 
-	public User(String userid, String em, String pw) throws Exception {
+	public User(String userid, String em, String pw) {
 		this.userID = userid;
 		this.email = em;
 		this.passwdHash = pw.hashCode();
 		this.favorates = new ArrayList<String>();
-		this.addFavorite("padding");
+		this.favorates.add("padding");
 	}
 
 	public User() {
 		// TODO Auto-generated constructor stub
+		this.favorates = new ArrayList<String>();
+		this.favorates.add("padding");
 	}
 
 	public void commit() throws Exception {
@@ -128,7 +130,7 @@ public class User {
 			return scanResult.getItems().get(0);
 	}
 
-	public User retrieveUser(String email, String pw) {
+	public User retrieveUser(String email, String pw) throws Exception {
 		Map<String, AttributeValue> intended_user = isUserExist(email);
 		if (intended_user == null) {
 			Log.d("***", "here");

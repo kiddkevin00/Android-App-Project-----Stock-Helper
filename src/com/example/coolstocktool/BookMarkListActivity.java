@@ -27,13 +27,15 @@ public class BookMarkListActivity extends ActionBarActivity {
 	public ArrayList<String> data;
 	public User usr;
 	public BookmarkAsyncTask bookmarkAsync;
+	public String email;
+	public String password;
 
 	public class DataFrom {
-		public String stockName;
-		public String id;
-		public String describe;
-		public String dateCreate;
-		public String ownerName;
+		// public String stockName;
+		// public String id;
+		// public String describe;
+		// public String dateCreate;
+		// public String ownerName;
 
 	}
 
@@ -59,13 +61,15 @@ public class BookMarkListActivity extends ActionBarActivity {
 		// _listView.setAdapter((ListAdapter) _adapter);
 
 		Intent intent = getIntent();
+		email = intent.getStringExtra("email");
+		password = intent.getStringExtra("password");
 		Log.d("***",
 				"Account info: " + intent.getStringExtra("email")
 						+ intent.getStringExtra("password"));
 		bookmarkAsync = new BookmarkAsyncTask();
 		List<String> params = new ArrayList<String>();
-		params.add(intent.getStringExtra("email"));
-		params.add(intent.getStringExtra("password"));
+		params.add(email);
+		params.add(password);
 		bookmarkAsync.execute(params);
 
 		_searchThread = (Button) findViewById(R.id.searchThread);
@@ -76,7 +80,8 @@ public class BookMarkListActivity extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.setClass(_context, SearchStockActivity.class);
-				intent.putExtra("meg2", "from bookmark acitivity");
+				intent.putExtra("email", email);
+				intent.putExtra("password", password);
 				startActivity(intent);
 			}
 		});
@@ -91,48 +96,56 @@ public class BookMarkListActivity extends ActionBarActivity {
 
 			Log.d("***", "Input: " + v[0].get(0) + v[0].get(1));
 			usr = new User();
-			Log.d("***",
-					"User retrieve : "
-							+ usr.retrieveUser(v[0].get(0), v[0].get(1)));
-			Log.d("***", "heelloo");
+			List<String> usrBmList = new ArrayList<String>();
+			try {
+				Log.d("***",
+						"User retrieve : "
+								+ usr.retrieveUser(v[0].get(0), v[0].get(1)));
 
-			if (usr.retrieveUser(v[0].get(0), v[0].get(1)) != null) {
-				Log.d("***", "hellooo");
-				usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
-				List<String> usrBmList = new ArrayList<String>();
-				if (usr.listFavorites() != null) {
-					Log.d("***",
-							"Size : "
-									+ Integer.toString(usr.listFavorites()
-											.size()));
-					usrBmList = usr.listFavorites();
+				Log.d("***", "heelloo");
 
-				} else {
-					Log.d("**", "");
-					usrBmList.add("Asus");
-					usrBmList.add("Acer");
-				}
-				Log.d("***", "user's BM list: " + usrBmList);
-				return usrBmList;
-			} else {
-				Log.d("***", "hellooo1");
-				usr = usr.retrieveUser("123", "123");
-				List<String> usrBmList = new ArrayList<String>();
-				if (usr.listFavorites() != null) {
-					Log.d("***",
-							"Size2 : "
-									+ Integer.toString(usr.listFavorites()
-											.size()));
-					usrBmList = usr.listFavorites();
+				if (usr.retrieveUser(v[0].get(0), v[0].get(1)) != null) {
+					Log.d("***", "hellooo");
+					usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
+
+					if (usr.listFavorites() != null) {
+						Log.d("***",
+								"Size : "
+										+ Integer.toString(usr.listFavorites()
+												.size()));
+						usrBmList = usr.listFavorites();
+
+					} else {
+						Log.d("**", "");
+						usrBmList.add("Asus");
+						usrBmList.add("Acer");
+					}
+					Log.d("***", "user's BM list: " + usrBmList);
 
 				} else {
-					Log.d("**", "");
-					usrBmList.add("Asus");
-					usrBmList.add("Acer");
+					Log.d("***", "hellooo1");
+					usr = usr.retrieveUser("123", "123");
+					if (usr.listFavorites() != null) {
+						Log.d("***",
+								"Size2 : "
+										+ Integer.toString(usr.listFavorites()
+												.size()));
+						usrBmList = usr.listFavorites();
+
+					} else {
+						Log.d("**", "");
+						usrBmList.add("Asus");
+						usrBmList.add("Acer");
+					}
+					Log.d("***", "user's BM list: " + usrBmList);
+
 				}
-				Log.d("***", "user's BM list: " + usrBmList);
-				return usrBmList;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			return usrBmList;
+
 		}
 
 		// for getView method

@@ -1,6 +1,5 @@
 package com.example.coolstocktool;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,15 +17,19 @@ import android.widget.TextView;
 import com.stockcloud.ThreadBody;
 
 public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
-		OnClickListener, Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+		OnClickListener {
 
 	class LayoutForm2 {
-		TextView name;
+		TextView _title;
+
+		String title;
+		String text;
+		long date;
+		int thread_id;
+		String user_created;
+		int reply_count;
+		String topic_name;
+		int floor;
 	}
 
 	public ArrayList<ThreadBody> data;
@@ -59,16 +62,24 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 			_row = inflater.inflate(R.layout.adapter_topic_for_an_stock, null);
 			item = new LayoutForm2();
 			// item.imageView = (ImageView) _row.findViewById(R.id.imageView1);
-			item.name = (TextView) _row.findViewById(R.id.textView1);
+			item._title = (TextView) _row.findViewById(R.id.textView1);
 			_row.setTag(item);
 			_row.setOnClickListener(this);
 		}
 
 		item = (LayoutForm2) _row.getTag();
 
-		String text = data.get(position).title;
+		item.title = data.get(position).title;
+		item.text = data.get(position).text;
+		item.date = data.get(position).date;
+		item.thread_id = data.get(position).thread_id;
+		item.user_created = data.get(position).user_created;
+		item.reply_count = data.get(position).reply_count;
+		item.topic_name = data.get(position).topic_name;
+		item.floor = data.get(position).floor;
+
 		Log.d("***", "Title : " + data.get(position).title);
-		item.name.setText(text);
+		item._title.setText(item.title);
 
 		return _row;
 	}
@@ -77,14 +88,27 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 
-		Log.d("***", "Clicked a Topic of specified Stock: " + "");
+		String title2 = ((LayoutForm2) v.getTag()).title;
+		String text2 = ((LayoutForm2) v.getTag()).text;
+		long date2 = ((LayoutForm2) v.getTag()).date;
+		int thread_id2 = ((LayoutForm2) v.getTag()).thread_id;
+		String user_created2 = ((LayoutForm2) v.getTag()).user_created;
+		int reply_count2 = ((LayoutForm2) v.getTag()).reply_count;
+		String topic_name2 = ((LayoutForm2) v.getTag()).topic_name;
+		int floor2 = ((LayoutForm2) v.getTag()).floor;
+		Log.d("***", "Clicked a Topic of specified Stock: " + title2);
 
 		Intent intent = new Intent();
-
 		intent.setClass(_context, ChatRoomActivity.class);
-		intent.putExtra("", "");
+		intent.putExtra("title", title2);
+		intent.putExtra("text", text2);
+		intent.putExtra("date", date2);
+		intent.putExtra("thread_id", thread_id2);
+		intent.putExtra("user_created", user_created2);
+		intent.putExtra("reply_count", reply_count2);
+		intent.putExtra("topic_name", topic_name2);
+		intent.putExtra("floor", floor2);
 		_context.startActivity(intent);
 
 	}
-
 }
