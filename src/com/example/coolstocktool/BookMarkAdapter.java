@@ -46,9 +46,7 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 		Log.d("***", "hello001");
 		row = convertView;
 		LayoutForm item;
-		Log.d("***", "hello2");
 		if (row == null) {
-			Log.d("***", "hello3");
 			LayoutInflater inflater = _context.getLayoutInflater();
 			row = inflater.inflate(R.layout.adapter_bm, null);
 			item = new LayoutForm();
@@ -57,15 +55,11 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 			row.setTag(item);
 			row.setOnClickListener(this);
 		}
-		Log.d("***", "hello4");
 		item = (LayoutForm) row.getTag();
 
-		Log.d("***", "hello5");
-		String text = data.get(position);
-		Log.d("***", "text: " + text);
-		item.text.setText(text);
-
-		Log.d("***", "hello6");
+		String stockName = data.get(position);
+		Log.d("***", "text: " + stockName);
+		item.text.setText(stockName);
 
 		return row;
 
@@ -73,8 +67,12 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 
 	@Override
 	public void onClick(View v) {
+
+		String stockName = ((LayoutForm) v.getTag()).text.getText().toString();
+		Log.d("***", "Clicked Stock Name: " + stockName);
+
 		Intent intent = new Intent();
-		intent.putExtra("stockName", "");
+		intent.putExtra("stockName", stockName);
 		intent.setClass(_context, StockDetailActivity.class);
 		_context.startActivity(intent);
 

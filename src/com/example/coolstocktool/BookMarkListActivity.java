@@ -90,24 +90,49 @@ public class BookMarkListActivity extends ActionBarActivity {
 		protected List<String> doInBackground(List<String>... v) {
 
 			Log.d("***", "Input: " + v[0].get(0) + v[0].get(1));
-
 			usr = new User();
-			usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
-			List<String> usrBmList = new ArrayList<String>();
-			if (usr.listFavorites() != null) {
-				Log.d("***",
-						"Size : "
-								+ Integer.toString(usr.listFavorites().size()));
-				usrBmList = usr.listFavorites();
+			Log.d("***",
+					"User retrieve : "
+							+ usr.retrieveUser(v[0].get(0), v[0].get(1)));
+			Log.d("***", "heelloo");
 
+			if (usr.retrieveUser(v[0].get(0), v[0].get(1)) != null) {
+				Log.d("***", "hellooo");
+				usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
+				List<String> usrBmList = new ArrayList<String>();
+				if (usr.listFavorites() != null) {
+					Log.d("***",
+							"Size : "
+									+ Integer.toString(usr.listFavorites()
+											.size()));
+					usrBmList = usr.listFavorites();
+
+				} else {
+					Log.d("**", "");
+					usrBmList.add("Asus");
+					usrBmList.add("Acer");
+				}
+				Log.d("***", "user's BM list: " + usrBmList);
+				return usrBmList;
 			} else {
-				Log.d("**", "");
-				usrBmList.add("Asus");
-				usrBmList.add("Acer");
-			}
-			Log.d("***", "user's BM list: " + usrBmList);
-			return usrBmList;
+				Log.d("***", "hellooo1");
+				usr = usr.retrieveUser("123", "123");
+				List<String> usrBmList = new ArrayList<String>();
+				if (usr.listFavorites() != null) {
+					Log.d("***",
+							"Size2 : "
+									+ Integer.toString(usr.listFavorites()
+											.size()));
+					usrBmList = usr.listFavorites();
 
+				} else {
+					Log.d("**", "");
+					usrBmList.add("Asus");
+					usrBmList.add("Acer");
+				}
+				Log.d("***", "user's BM list: " + usrBmList);
+				return usrBmList;
+			}
 		}
 
 		// for getView method

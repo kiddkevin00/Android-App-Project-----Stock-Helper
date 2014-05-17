@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.util.Log;
+
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.ClasspathPropertiesFileCredentialsProvider;
@@ -118,7 +120,7 @@ public class User {
 		ScanRequest scanRequest = new ScanRequest(tableName)
 				.withScanFilter(scanFilter);
 		ScanResult scanResult = dynamoDB.scan(scanRequest);
-
+		Log.d("***", "Testt : " + Integer.toString(scanResult.getCount()));
 		dynamoDB.shutdown();
 		if (scanResult.getCount() != 1)
 			return null;
@@ -128,9 +130,10 @@ public class User {
 
 	public User retrieveUser(String email, String pw) {
 		Map<String, AttributeValue> intended_user = isUserExist(email);
-		if (intended_user == null)
+		if (intended_user == null) {
+			Log.d("***", "here");
 			return null;
-		else {
+		} else {
 			int target_Hash = Integer.parseInt(intended_user
 					.get("passwordHash").getS());
 			if (pw.hashCode() != target_Hash)
