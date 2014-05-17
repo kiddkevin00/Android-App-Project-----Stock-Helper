@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -32,6 +33,7 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 
 	public ArrayList<DataForm2> data;
 	public TopicAsyncTask topicAsync;
+	public String stockName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,10 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_topic_for_an_stock);
 
 		context = this;
+
+		Intent intent = getIntent();
+		stockName = intent.getStringExtra("stockName");
+		Log.d("***", "Stock Name for the following topics : " + stockName);
 
 		// hard-code input data
 		data = new ArrayList<DataForm2>();
@@ -54,7 +60,7 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 		Log.d("***", "data : " + data);
 
 		topicAsync = new TopicAsyncTask();
-		topicAsync.execute("APPLEINC");
+		topicAsync.execute(stockName);
 
 	}
 

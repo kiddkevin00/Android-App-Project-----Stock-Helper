@@ -33,7 +33,7 @@ public class ThreadBody {
 	public final int floor = 0;
 	public String user_created;
 	public int reply_count;
-	public String topic_name;
+	public String topic_name; // stock name
 
 	AmazonDynamoDBClient dynamoDB;
 	final String tableName = "stock-threads";

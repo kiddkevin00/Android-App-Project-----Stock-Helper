@@ -46,8 +46,15 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				email = _email.getText().toString();
-				password = _password.getText().toString();
+				Log.d("***", "email: " + _email.getText().toString().equals(""));
+				if (!(_email.getText().toString().equals(""))
+						&& !(_password.getText().toString().equals(""))) {
+					email = _email.getText().toString();
+					password = _password.getText().toString();
+				} else {
+					email = "123";
+					password = "123";
+				}
 				Log.d("***", "account Log In: " + email + password);
 				Intent intent = new Intent();
 				intent.putExtra("email", email);

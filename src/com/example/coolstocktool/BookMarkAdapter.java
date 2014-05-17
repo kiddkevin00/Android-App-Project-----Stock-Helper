@@ -26,7 +26,6 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 	class LayoutForm {
 		public ImageView imageView;
 		public TextView text;
-		public String imageUri;
 
 	}
 

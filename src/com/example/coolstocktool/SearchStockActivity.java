@@ -4,33 +4,42 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class SearchStockActivity extends ActionBarActivity {
 
 	public Button _searchStockButton;
-	public Context context;
+	public Context _context;
+	public EditText _searchStockName;
+
+	public String stockName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_stock);
 
-		context = this;
-
+		_context = this;
+		_searchStockName = (EditText) findViewById(R.id.searchStockName);
 		_searchStockButton = (Button) findViewById(R.id.searchStock);
+
+		_searchStockName.setText("APPLEINC");
 		_searchStockButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				stockName = _searchStockName.getText().toString();
+				Log.d("***", "Stock Name to search: " + stockName);
 				Intent intent = new Intent();
-				intent.setClass(context, StockDetailActivity.class);
-				intent.putExtra("msg3", "from search stock activity");
+				intent.setClass(_context, StockDetailActivity.class);
+				intent.putExtra("stockName", stockName);
 				startActivity(intent);
 			}
 		});

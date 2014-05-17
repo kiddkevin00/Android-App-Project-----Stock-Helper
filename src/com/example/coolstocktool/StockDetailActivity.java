@@ -10,21 +10,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class StockDetailActivity extends ActionBarActivity {
 
 	private Button _addBookmark;
 	private Button _findThread;
-	public Context context;
+	public Context _context;
+	public TextView _stockName;
+
+	public String stockName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stock_detail);
 
-		context = this;
+		_context = this;
 
+		_stockName = (TextView) findViewById(R.id.stockName);
+		_findThread = (Button) findViewById(R.id.findThread);
 		_addBookmark = (Button) findViewById(R.id.addBookmark);
+
+		Intent intent = getIntent();
+		stockName = intent.getStringExtra("stockName");
+		Log.d("***", "Stock Name : " + stockName);
+
 		_addBookmark.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -34,22 +45,20 @@ public class StockDetailActivity extends ActionBarActivity {
 			}
 		});
 
-		_findThread = (Button) findViewById(R.id.findThread);
+		_stockName.setText(stockName);
+
 		_findThread.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent thrIntent = new Intent();
-				thrIntent.setClass(context, TopicForAnStockActivity.class);
+				thrIntent.setClass(_context, TopicForAnStockActivity.class);
+				thrIntent.putExtra("stockName", stockName);
 				startActivity(thrIntent);
 
 			}
 		});
-
-		Intent intent = getIntent();
-		String stockName = intent.getStringExtra("stockName");
-		Log.d("***", "Stock Name : " + stockName);
 
 	}
 

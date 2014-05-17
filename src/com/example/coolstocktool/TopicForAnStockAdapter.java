@@ -1,5 +1,6 @@
 package com.example.coolstocktool;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,12 @@ import android.widget.TextView;
 import com.stockcloud.ThreadBody;
 
 public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
-		OnClickListener {
+		OnClickListener, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	class LayoutForm2 {
 		TextView name;
@@ -57,11 +63,12 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 			_row.setTag(item);
 			_row.setOnClickListener(this);
 		}
-		Log.d("***", "hello40");
+
 		item = (LayoutForm2) _row.getTag();
 
-		int text = data.get(position).reply_count;
-		item.name.setText(Integer.toString(text));
+		String text = data.get(position).title;
+		Log.d("***", "Title : " + data.get(position).title);
+		item.name.setText(text);
 
 		return _row;
 	}
@@ -69,9 +76,13 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+
+		Log.d("***", "Clicked a Topic of specified Stock: " + "");
+
 		Intent intent = new Intent();
-		intent.putExtra("sms", "from topic activity");
+
 		intent.setClass(_context, ChatRoomActivity.class);
+		intent.putExtra("", "");
 		_context.startActivity(intent);
 
 	}
