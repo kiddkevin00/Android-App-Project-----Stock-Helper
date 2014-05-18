@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=""
+    tools:context="com.example.coolstocktool.TopicForAnStockActivity"
     tools:ignore="MergeRootFrame" >
     <TextView
         android:id="@+id/nameText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="21dp"
         android:layout_marginTop="80dp"
@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/whenText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignRight="@+id/nameText"
         android:layout_below="@+id/nameText"
         android:layout_marginTop="60dp"
@@ -29,7 +29,7 @@
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/nameText"
         android:layout_toRightOf="@+id/nameText"
@@ -38,11 +38,11 @@
     <EditText
         android:id="@+id/dateEditText"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignBaseline="@+id/whenText"
         android:layout_alignBottom="@+id/whenText"
         android:layout_alignLeft="@+id/nameEditText"
         android:layout_alignParentRight="true"
         android:ems="10"
-        android:hint=" ex buy ASAP" />
+        android:hint=" ex. buy ASAP" />
 </RelativeLayout>

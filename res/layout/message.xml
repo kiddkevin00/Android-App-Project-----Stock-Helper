@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/createevent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.coolstocktool.TopicForAnStockActivity"
+    tools:ignore="MergeRootFrame" >
+    <!-- **** HAHA **** -->
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/nameText"
+        android:layout_toRightOf="@+id/nameText"
+        android:ems="10"
+        android:hint="ex. That&apos;s not true.." />
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="82dp"
+        android:text="Message"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+</RelativeLayout>

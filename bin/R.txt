@@ -371,7 +371,8 @@ int layout adapter_bm 0x7f03001e
 int layout adapter_chat_room 0x7f03001f
 int layout adapter_topic_for_an_stock 0x7f030020
 int layout createevent 0x7f030021
-int layout support_simple_spinner_dropdown_item 0x7f030022
+int layout message 0x7f030022
+int layout support_simple_spinner_dropdown_item 0x7f030023
 int menu chat_room_adapter 0x7f0c0000
 int menu main 0x7f0c0001
 int menu search_stock 0x7f0c0002
