@@ -57,7 +57,7 @@ public class StockDetailActivity extends ActionBarActivity {
 				List<String> paras = new ArrayList<String>();
 				paras.add(email);
 				paras.add(password);
-				paras.add("HTC2");
+				paras.add(stockName);
 				addBookMarkAsync = new AddBookMarkAsyncTask();
 				addBookMarkAsync.execute(paras);
 			}
