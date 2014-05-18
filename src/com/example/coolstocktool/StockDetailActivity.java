@@ -38,7 +38,7 @@ public class StockDetailActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_stock_detail);
 
 		_context = this;
-		_stockName = (TextView) findViewById(R.id.stockName);
+		_stockName = (TextView) findViewById(R.id.stockNameResult);
 		_findThread = (Button) findViewById(R.id.findThread);
 		_addBookmark = (Button) findViewById(R.id.addBookmark);
 

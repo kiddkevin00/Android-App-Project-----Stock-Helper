@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.stockcloud.ThreadBody;
 import com.stockcloud.ThreadReply;
@@ -31,6 +32,7 @@ public class ChatRoomActivity extends ActionBarActivity {
 	public Context _context;
 	public ChatRoomAdapter _adapter;
 	public List<ThreadReply> _messageList;
+	public TextView _topic;
 	// for dialog
 	public EditText _message;
 
@@ -57,6 +59,7 @@ public class ChatRoomActivity extends ActionBarActivity {
 		_context = this;
 		_chatList = (ListView) findViewById(R.id.listView1);
 		_sendMessage = (Button) findViewById(R.id.sendMessage);
+		_topic = (TextView) findViewById(R.id.topic);
 
 		// for testing
 		// List<String> test = new ArrayList<String>();
@@ -81,6 +84,9 @@ public class ChatRoomActivity extends ActionBarActivity {
 
 		chatRoomAsync = new ChatRoomAsyncTask();
 		chatRoomAsync.execute(tb);
+
+		// set topic
+		_topic.setText(title);
 
 		_sendMessage.setOnClickListener(new OnClickListener() {
 

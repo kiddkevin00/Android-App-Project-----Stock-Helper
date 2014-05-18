@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp" >
     </ListView>
     <Button
         android:id="@+id/searchThread"
@@ -19,5 +20,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="18dp"
-        android:text="Find Other Stocks" />
+        android:text="Find Others" />
 </RelativeLayout>

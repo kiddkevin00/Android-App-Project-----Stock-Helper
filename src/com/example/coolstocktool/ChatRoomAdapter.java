@@ -19,7 +19,9 @@ public class ChatRoomAdapter extends ArrayAdapter<ThreadReply> implements
 		OnClickListener {
 
 	class LayoutForm3 {
-		TextView text;
+		TextView _message;
+		TextView _voteResult;
+		TextView _postEmail;
 	}
 
 	public View row;
@@ -47,7 +49,9 @@ public class ChatRoomAdapter extends ArrayAdapter<ThreadReply> implements
 			LayoutInflater inflater = _context.getLayoutInflater();
 			row = inflater.inflate(R.layout.adapter_chat_room, null);
 			item = new LayoutForm3();
-			item.text = (TextView) row.findViewById(R.id.textView1);
+			item._message = (TextView) row.findViewById(R.id.textView1);
+			item._voteResult = (TextView) row.findViewById(R.id.voteResult);
+			item._postEmail = (TextView) row.findViewById(R.id.postEmail);
 			row.setTag(item);
 			row.setOnClickListener(this);
 		}
@@ -55,8 +59,10 @@ public class ChatRoomAdapter extends ArrayAdapter<ThreadReply> implements
 
 		String text = data.get(position).text;
 		Log.d("***", "text: " + text);
-		item.text.setText(text);
+		item._message.setText(text);
 
+		item._voteResult.setText(Integer.toString(data.get(position).voting));
+		item._postEmail.setText(data.get(position).user_created);
 		return row;
 
 	}

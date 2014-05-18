@@ -25,7 +25,10 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 	public String password;
 
 	class LayoutForm {
-		public TextView _text;
+		public TextView _stockName;
+		// revise later
+		public TextView _price;
+		public TextView _detail;
 		public String email2;
 		public String password2;
 
@@ -49,7 +52,9 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 			LayoutInflater inflater = _context.getLayoutInflater();
 			row = inflater.inflate(R.layout.adapter_bm, null);
 			item = new LayoutForm();
-			item._text = (TextView) row.findViewById(R.id.textView1);
+			item._stockName = (TextView) row.findViewById(R.id.stockNameResult);
+			item._price = (TextView) row.findViewById(R.id.priceResult);
+			item._detail = (TextView) row.findViewById(R.id.detail);
 			row.setTag(item);
 			row.setOnClickListener(this);
 		}
@@ -57,7 +62,7 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 
 		String stockName = data.get(position);
 		Log.d("***", "text: " + stockName);
-		item._text.setText(stockName);
+		item._stockName.setText(stockName);
 
 		return row;
 
@@ -66,7 +71,8 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 	@Override
 	public void onClick(View v) {
 
-		String stockName = ((LayoutForm) v.getTag())._text.getText().toString();
+		String stockName = ((LayoutForm) v.getTag())._stockName.getText()
+				.toString();
 		Log.d("***", "Clicked Stock Name: " + stockName);
 
 		// BookMarkListActivity.help(stockName, _context);

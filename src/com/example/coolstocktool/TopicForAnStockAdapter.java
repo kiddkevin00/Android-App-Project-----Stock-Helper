@@ -21,6 +21,8 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 
 	class LayoutForm2 {
 		TextView _title;
+		TextView _threadCount;
+		TextView _postEmail;
 
 		String title;
 		String text;
@@ -63,8 +65,10 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 			LayoutInflater inflater = _context.getLayoutInflater();
 			_row = inflater.inflate(R.layout.adapter_topic_for_an_stock, null);
 			item = new LayoutForm2();
-			// item.imageView = (ImageView) _row.findViewById(R.id.imageView1);
-			item._title = (TextView) _row.findViewById(R.id.textView1);
+			item._title = (TextView) _row.findViewById(R.id.topicNameResult);
+			item._threadCount = (TextView) _row
+					.findViewById(R.id.threadCountResult);
+			item._postEmail = (TextView) _row.findViewById(R.id.postEmail);
 			_row.setTag(item);
 			_row.setOnClickListener(this);
 		}
@@ -82,6 +86,10 @@ public class TopicForAnStockAdapter extends ArrayAdapter<ThreadBody> implements
 
 		Log.d("***", "Title : " + data.get(position).title);
 		item._title.setText(item.title);
+
+		item._threadCount
+				.setText(Integer.toString(data.get(position).reply_count));
+		item._postEmail.setText(data.get(position).user_created);
 
 		return _row;
 	}

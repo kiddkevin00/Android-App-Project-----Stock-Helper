@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.stockcloud.ChatTopic;
 import com.stockcloud.ThreadBody;
@@ -41,6 +42,7 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 	public Context _context;
 	public TopicForAnStockAdapter _adapter;
 	public Button _addThread;
+	public TextView _stockName;
 
 	// public ArrayList<DataForm2> data;
 	public TopicAsyncTask topicAsync;
@@ -60,6 +62,7 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 
 		_context = this;
 		_addThread = (Button) findViewById(R.id.addThread);
+		_stockName = (TextView) findViewById(R.id.stockName);
 
 		Intent intent = getIntent();
 		stockName = intent.getStringExtra("stockName");
@@ -68,6 +71,8 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 
 		Log.d("***", "Account and Stock Name for the following topics : "
 				+ stockName + email + password);
+
+		_stockName.setText(stockName);
 
 		// hard-code input data
 		// data = new ArrayList<DataForm2>();

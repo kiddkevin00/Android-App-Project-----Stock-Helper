@@ -48,12 +48,4 @@
         android:layout_alignBottom="@+id/password"
         android:layout_toLeftOf="@+id/password"
         android:text="Password" />
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="27dp"
-        android:text="Test" />
 </RelativeLayout>
