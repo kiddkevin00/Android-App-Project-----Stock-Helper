@@ -42,6 +42,7 @@
         android:layout_alignBaseline="@+id/whenText"
         android:layout_alignBottom="@+id/whenText"
         android:layout_alignLeft="@+id/nameEditText"
+        android:layout_alignParentRight="true"
         android:ems="10"
-        android:hint=" ex. This is the right time to buy" />
+        android:hint=" ex buy ASAP" />
 </RelativeLayout>
