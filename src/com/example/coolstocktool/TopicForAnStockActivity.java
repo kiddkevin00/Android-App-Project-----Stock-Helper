@@ -101,7 +101,7 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 				final View view = inflater.inflate(R.layout.createevent, null);
 				builder.setView(view);
 				// 4. Add the buttons
-				builder.setPositiveButton("Create",
+				builder.setPositiveButton("Add",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								// User clicked CREATE button
@@ -114,9 +114,12 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 								paras.add(stockName);
 								paras.add(_title.getText().toString());
 								paras.add(_detail.getText().toString());
+								Log.d("***",
+										"Dialog: " + paras.get(0)
+												+ paras.get(1) + paras.get(2));
 
 								addTopicAsync = new AddTopicAsyncTask();
-								// addTopicAsync.execute(paras);
+								addTopicAsync.execute(paras);
 
 								// return to background
 								dialog.dismiss();
@@ -204,8 +207,8 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 				Log.d("***",
 						"Input6: " + v[0].get(0) + v[0].get(1) + v[0].get(2));
 				cTopic = new ChatTopic();
-				cTopic = cTopic.findChatTopic("Instamour");
-				cTopic.addThreadToTopic("title", "text", "user_email");
+				cTopic = cTopic.findChatTopic(v[0].get(0));
+				cTopic.addThreadToTopic(v[0].get(1), v[0].get(2), email);
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
