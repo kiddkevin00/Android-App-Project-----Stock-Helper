@@ -29,4 +29,12 @@
         android:layout_alignRight="@+id/addBookmark"
         android:layout_marginTop="67dp"
         android:text="Stock Name" />
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/stockName"
+        android:layout_below="@+id/addBookmark"
+        android:layout_marginTop="32dp"
+        android:text="Delete" />
 </RelativeLayout>
