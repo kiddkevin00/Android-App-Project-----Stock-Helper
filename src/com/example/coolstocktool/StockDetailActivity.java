@@ -1,7 +1,12 @@
 package com.example.coolstocktool;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import android.R.integer;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -11,6 +16,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.stockcloud.User;
 
 public class StockDetailActivity extends ActionBarActivity {
 
@@ -22,6 +29,8 @@ public class StockDetailActivity extends ActionBarActivity {
 	public String stockName;
 	public String email;
 	public String password;
+	public User usr;
+	public AddBookMarkAsyncTask addBookMarkAsync;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +54,12 @@ public class StockDetailActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				List<String> paras = new ArrayList<String>();
+				paras.add(email);
+				paras.add(password);
+				paras.add("HTC2");
+				addBookMarkAsync = new AddBookMarkAsyncTask();
+				addBookMarkAsync.execute(paras);
 			}
 		});
 
@@ -86,6 +100,47 @@ public class StockDetailActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	// for testing
+	private class AddBookMarkAsyncTask extends
+			AsyncTask<List<String>, integer, String> {
+
+		@Override
+		protected String doInBackground(List<String>... v) {
+
+			Log.d("***", "Input5: " + v[0].get(0) + v[0].get(1) + v[0].get(2));
+			usr = new User();
+			try {
+				Log.d("***",
+						"User retrieve : "
+								+ usr.retrieveUser(v[0].get(0), v[0].get(1)));
+
+				if (usr.retrieveUser(v[0].get(0), v[0].get(1)) != null) {
+					usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
+				} else {
+					usr = usr.retrieveUser("123", "123");
+				}
+				usr.addFavorite(v[0].get(2));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return "okay";
+		}
+
+		// for getView method
+		@Override
+		protected void onPostExecute(String result) {
+
+			if (result != null) {
+				Log.d("*****", "onpost result2: " + result);
+
+			} else {
+
+			}
+		}
+
 	}
 
 }
