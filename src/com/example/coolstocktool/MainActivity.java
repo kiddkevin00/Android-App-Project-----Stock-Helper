@@ -1,7 +1,12 @@
 package com.example.coolstocktool;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import android.R.integer;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -12,6 +17,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.stockcloud.searchstock;
+import com.stockcloud.updatestock;
+
 public class MainActivity extends ActionBarActivity {
 
 	private Button _toBookmark;
@@ -20,8 +28,8 @@ public class MainActivity extends ActionBarActivity {
 	public TextView _password;
 
 	// for testing
-	// public test tt;
-	// public TextView _test;
+	public test tt;
+	public TextView _test;
 
 	public String email;
 	public String password;
@@ -34,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
 		_context = this;
 		_email = (TextView) findViewById(R.id.ueserID);
 		_password = (TextView) findViewById(R.id.password);
-		// _test = (TextView) findViewById(R.id.test);
+		_test = (TextView) findViewById(R.id.test);
 		_toBookmark = (Button) findViewById(R.id.toBM);
 
 		_toBookmark.setOnClickListener(new OnClickListener() {
@@ -61,8 +69,8 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 
-		// tt = new test();
-		// tt.execute("APPLEINC");
+		tt = new test();
+		tt.execute("nothing");
 	}
 
 	@Override
@@ -86,31 +94,47 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	// for testing
-	// private class test extends AsyncTask<String, integer, ChatTopic> {
-	//
-	// @Override
-	// protected ChatTopic doInBackground(String... v) {
-	//
-	// ChatTopic testTopic = new ChatTopic();
-	// Log.d("***", "String: " + v[0]);
-	// testTopic = testTopic.findChatTopic(v[0]);
-	// return testTopic;
-	//
-	// }
-	//
-	// // for getView method
-	// @Override
-	// protected void onPostExecute(ChatTopic result) {
-	//
-	// if (result != null) {
-	// Log.d("*****", "onpost result2: " + result.thread_count);
-	// _test.setText(Integer.toString(result.thread_count));
-	// } else {
-	// Log.d("**", "fail");
-	// }
-	//
-	// }
-	//
-	// }
+	private class test extends AsyncTask<String, integer, List<String>> {
+
+		@Override
+		protected List<String> doInBackground(String... v) {
+
+			Log.d("***", "String: " + v[0]);
+			updatestock updatest = new updatestock();
+			searchstock searchst = new searchstock();
+			Log.d("***", "testingg");
+			List<String> success = new ArrayList<String>();
+			try {
+				Log.d("****", "wow");
+				// updatest.update();
+				Log.d("***", "wow3 : " + searchst.search("ABT").get(0)
+						+ searchst.search("ABT").get(1)
+						+ searchst.search("ABT").get(2));
+				success = new ArrayList<String>();
+				success = searchst.search("ABT");
+			} catch (Exception e) {
+				success.add("error!!");
+				Log.d("****", "wow2");
+				e.printStackTrace();
+			}
+
+			return success;
+
+		}
+
+		@Override
+		protected void onPostExecute(List<String> result) {
+
+			if (result != null) {
+				Log.d("*****", "onpost result2: " + result.size());
+				_test.setText("Update Time : " + result.get(0)
+						+ "  Open price : " + result.get(1)
+						+ "  Current price : " + result.get(2));
+			} else {
+				Log.d("**", "fail");
+			}
+
+		}
+	}
 
 }
