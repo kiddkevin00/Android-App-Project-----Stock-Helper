@@ -176,9 +176,14 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 		protected List<ThreadBody> doInBackground(String... v) {
 
 			ChatTopic ct = new ChatTopic();
+			List<ThreadBody> tb = new ArrayList<ThreadBody>();
 			Log.d("***", "String: " + v[0]);
-			ct = ct.findChatTopic(v[0]);
-			List<ThreadBody> tb = ct.listThreads();
+			if (ct.findChatTopic(v[0]) != null) {
+				Log.d("***", "There are some Topic here!!");
+				ct = ct.findChatTopic(v[0]);
+				tb = ct.listThreads();
+			}
+			Log.d("***", "Wrong way!!");
 			return tb;
 
 		}

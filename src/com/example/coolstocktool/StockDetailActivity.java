@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.stockcloud.User;
+import com.stockcloud.searchstock;
+import com.stockcloud.update30;
+import com.stockcloud.updatestock;
 
 public class StockDetailActivity extends ActionBarActivity {
 
@@ -25,12 +28,18 @@ public class StockDetailActivity extends ActionBarActivity {
 	private Button _findThread;
 	public Context _context;
 	public TextView _stockName;
+	public TextView _price;
+	public TextView _updateTime;
+	public TextView _openPrice;
+	public TextView _predictPrice;
 
 	public String stockName;
 	public String email;
 	public String password;
 	public User usr;
 	public AddBookMarkAsyncTask addBookMarkAsync;
+	public StockDetailAsyncTask stockDetailAsync;
+	public StockPredictAsyncTask stockPredictAsync;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,10 @@ public class StockDetailActivity extends ActionBarActivity {
 		_stockName = (TextView) findViewById(R.id.stockNameResult);
 		_findThread = (Button) findViewById(R.id.findThread);
 		_addBookmark = (Button) findViewById(R.id.addBookmark);
+		_price = (TextView) findViewById(R.id.priceResult);
+		_updateTime = (TextView) findViewById(R.id.updateTimeResult);
+		_openPrice = (TextView) findViewById(R.id.openPriceResult);
+		_predictPrice = (TextView) findViewById(R.id.predictPriceResult);
 
 		Intent intent = getIntent();
 		stockName = intent.getStringExtra("stockName");
@@ -64,6 +77,15 @@ public class StockDetailActivity extends ActionBarActivity {
 		});
 
 		_stockName.setText(stockName);
+
+		// if (stockName.equals("APPLEINC")) {
+		// String stockNameString = "ABT";
+		stockDetailAsync = new StockDetailAsyncTask();
+		stockDetailAsync.execute(stockName);
+		// } else {
+		stockPredictAsync = new StockPredictAsyncTask();
+		stockPredictAsync.execute(stockName);
+		// }
 
 		_findThread.setOnClickListener(new OnClickListener() {
 
@@ -140,7 +162,89 @@ public class StockDetailActivity extends ActionBarActivity {
 
 			}
 		}
-
 	}
 
+	// for testing
+	private class StockDetailAsyncTask extends
+			AsyncTask<String, integer, List<String>> {
+
+		@Override
+		protected List<String> doInBackground(String... v) {
+
+			Log.d("***", "String: " + v[0]);
+			updatestock updatest = new updatestock();
+			searchstock searchst = new searchstock();
+			Log.d("***", "testingg");
+			List<String> success = new ArrayList<String>();
+			try {
+				updatest.update(v[0]);
+				Log.d("***", "test result : " + searchst.search(v[0]).get(0)
+						+ searchst.search(v[0]).get(1)
+						+ searchst.search(v[0]).get(2));
+				success = new ArrayList<String>();
+				success = searchst.search(v[0]);
+			} catch (Exception e) {
+				success.add("error!!");
+				Log.d("****", "wow2");
+				e.printStackTrace();
+			}
+
+			return success;
+
+		}
+
+		@Override
+		protected void onPostExecute(List<String> result) {
+
+			if (result != null) {
+				Log.d("*****", "onpost result8: " + result.size());
+				_price.setText(result.get(2));
+				_updateTime.setText(result.get(0));
+				_openPrice.setText(result.get(1));
+
+			} else {
+				Log.d("**", "fail");
+			}
+
+		}
+	}
+
+	private class StockPredictAsyncTask extends
+			AsyncTask<String, integer, String> {
+
+		@Override
+		protected String doInBackground(String... v) {
+
+			Log.d("***", "String: " + v[0]);
+			Log.d("***", "testingg");
+			update30 update_30 = new update30();
+			int success;
+			String successString;
+			try {
+				Log.d("***", "test result : ");
+				success = update_30.update_30("ABT");
+				successString = Integer.toString(success);
+			} catch (Exception e1) {
+				successString = "fail!";
+				Log.d("****", "wow2");
+				e1.printStackTrace();
+
+			}
+
+			return successString;
+
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+
+			if (result != null) {
+				Log.d("*****", "onpost result2: " + result);
+				_predictPrice.setText(result);
+			} else {
+				Log.d("**", "fail");
+			}
+
+		}
+	}
 }

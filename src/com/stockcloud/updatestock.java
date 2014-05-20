@@ -77,7 +77,7 @@ public class updatestock {
 
 	}
 
-	public void update() throws Exception {
+	public void update(String stockName) throws Exception {
 		init();
 		String csvString;
 		URL url = null;
@@ -89,112 +89,114 @@ public class updatestock {
 		// System.out.println(jb);
 		// String[] newsymbol=symbol.split(",");
 		int i = 0;
-		String symbol[] = { "ABT", "ABBV", "ACE", "ACN", "ACT", "ADBE", "ADT",
-				"AET", "AFL", "ARG", "AA", "ALL", "ALTR", "AMZN", "AAPL",
-				"BLL", "BAC", "BMS", "BBY", "BLK", "BSX", "CA", "COF", "CCL",
-				"CAT", "CERN", "CVX", "CSCO", "COH", "KO", "COST", "DVN",
-				"DTV", "DG", "DOV", "DOW", "DUK", "EBAY", "EOG", "EMR", "EFX",
-				"EQR", "EXPE", "ESRX", "FB", "FE", "FLIR", "FMC", "F", "FOSL",
-				"GME", "GPS", "GD", "GE", "GIS", "GS", "GOOG", "HOG", "HRS",
-				"HCP", "HAS", "HES", "HD", "HST", "HUM", "ITW", "INTC", "ICE",
-				"IBM", "INTU", "IVZ", "JOY", "JNPR", "KEY", "KMI", "KLAC",
-				"KSS", "KR", "LB", "LRCX", "LM", "LEN", "LNC", "LOW", "MAC",
-				"MMM", "M", "MAR", "MA", "MCD", "MRK", "MET", "MU", "MSFT",
-				"MNST", "MS", "MOS", "MUR", "MYL" };
+		String symbol = stockName;
+		// String symbol[] = { "ABT", "ABBV", "ACE", "ACN", "ACT", "ADBE",
+		// "ADT",
+		// "AET", "AFL", "ARG", "AA", "ALL", "ALTR", "AMZN", "AAPL",
+		// "BLL", "BAC", "BMS", "BBY", "BLK", "BSX", "CA", "COF", "CCL",
+		// "CAT", "CERN", "CVX", "CSCO", "COH", "KO", "COST", "DVN",
+		// "DTV", "DG", "DOV", "DOW", "DUK", "EBAY", "EOG", "EMR", "EFX",
+		// "EQR", "EXPE", "ESRX", "FB", "FE", "FLIR", "FMC", "F", "FOSL",
+		// "GME", "GPS", "GD", "GE", "GIS", "GS", "GOOG", "HOG", "HRS",
+		// "HCP", "HAS", "HES", "HD", "HST", "HUM", "ITW", "INTC", "ICE",
+		// "IBM", "INTU", "IVZ", "JOY", "JNPR", "KEY", "KMI", "KLAC",
+		// "KSS", "KR", "LB", "LRCX", "LM", "LEN", "LNC", "LOW", "MAC",
+		// "MMM", "M", "MAR", "MA", "MCD", "MRK", "MET", "MU", "MSFT",
+		// "MNST", "MS", "MOS", "MUR", "MYL" };
+
 		// String
-		// Num[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","3","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10",}
+		// Num[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14",
+		// "15","16","17","18","19","20","21","22","23","24","25","26","27","28",
+		// "29","30","3","2","3","4","5","6","7","8","9","10","1","2","3","4","5",
+		// "6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2",
+		// "3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9",
+		// "10","1","2","3","4","5","6","7","8","9","10",}
+
 		// loop to get the current data of every stocks(100)
-		while (i < symbol.length) {
-			url = new URL("http://quote.yahoo.com/d/quotes.csv?s=" + symbol[i]
-					+ "&f=osl1d1t1c1ohgv&e=.csv");
-			urlConn = url.openConnection();
-			inStream = new InputStreamReader(urlConn.getInputStream());
-			buff = new BufferedReader(inStream);
-			// get the quote as a csv string
-			csvString = buff.readLine();
-			// while(csvString!=null)
 
-			// {
-			// parse the csv string
-			StringTokenizer tokenizer = new StringTokenizer(csvString, ",");
-			String open = tokenizer.nextToken();
-			String ticker = tokenizer.nextToken();
-			String price = tokenizer.nextToken();
-			String tradeDate = tokenizer.nextToken();
-			String tradeTime = tokenizer.nextToken();
+		url = new URL("http://quote.yahoo.com/d/quotes.csv?s=" + symbol
+				+ "&f=osl1d1t1c1ohgv&e=.csv");
+		urlConn = url.openConnection();
+		inStream = new InputStreamReader(urlConn.getInputStream());
+		buff = new BufferedReader(inStream);
+		// get the quote as a csv string
+		csvString = buff.readLine();
+		// while(csvString!=null)
 
-			System.out.println("Symbol: " + ticker + " Price: " + price
-					+ " Date: " + tradeDate + " Time: " + tradeTime);
+		// {
+		// parse the csv string
+		StringTokenizer tokenizer = new StringTokenizer(csvString, ",");
+		String open = tokenizer.nextToken();
+		String ticker = tokenizer.nextToken();
+		String price = tokenizer.nextToken();
+		String tradeDate = tokenizer.nextToken();
+		String tradeTime = tokenizer.nextToken();
 
-			// ���������������������������table
-			try {
-				String tableName = symbol[i] + "current";
+		System.out.println("Symbol: " + ticker + " Price: " + price + " Date: "
+				+ tradeDate + " Time: " + tradeTime);
 
-				// Create table if it does not exist yet
-				if (Tables.doesTableExist(dynamoDB, tableName)) {
-					System.out.println("Table " + tableName
-							+ " is already ACTIVE");
-				} else {
-					// Create a table with a primary hash key named 'name',
-					// which holds a string
-					CreateTableRequest createTableRequest = new CreateTableRequest()
-							.withTableName(tableName)
-							.withKeySchema(
-									new KeySchemaElement().withAttributeName(
-											"Time").withKeyType(KeyType.HASH))
-							.withAttributeDefinitions(
-									new AttributeDefinition()
-											.withAttributeName("Time")
-											.withAttributeType(
-													ScalarAttributeType.S))
-							.withProvisionedThroughput(
-									new ProvisionedThroughput()
-											.withReadCapacityUnits(1L)
-											.withWriteCapacityUnits(1L));
-					TableDescription createdTableDescription = dynamoDB
-							.createTable(createTableRequest)
-							.getTableDescription();
-					System.out.println("Created Table: "
-							+ createdTableDescription);
+		// table
+		try {
+			String tableName = symbol + "current";
 
-					// Wait for it to become active
-					System.out.println("Waiting for " + tableName
-							+ " to become ACTIVE...");
-					Tables.waitForTableToBecomeActive(dynamoDB, tableName);
-				}
-				Map<String, AttributeValue> item = newItem(ticker, price,
-						tradeDate, tradeTime, open);
-				PutItemRequest putItemRequest = new PutItemRequest(tableName,
-						item);
-				PutItemResult putItemResult = dynamoDB.putItem(putItemRequest);
-				System.out.println("Result: " + putItemResult);
+			// Create table if it does not exist yet
+			if (Tables.doesTableExist(dynamoDB, tableName)) {
+				System.out.println("Table " + tableName + " is already ACTIVE");
+			} else {
+				// Create a table with a primary hash key named 'name',
+				// which holds a string
+				CreateTableRequest createTableRequest = new CreateTableRequest()
+						.withTableName(tableName)
+						.withKeySchema(
+								new KeySchemaElement()
+										.withAttributeName("Time").withKeyType(
+												KeyType.HASH))
+						.withAttributeDefinitions(
+								new AttributeDefinition().withAttributeName(
+										"Time").withAttributeType(
+										ScalarAttributeType.S))
+						.withProvisionedThroughput(
+								new ProvisionedThroughput()
+										.withReadCapacityUnits(1L)
+										.withWriteCapacityUnits(1L));
+				TableDescription createdTableDescription = dynamoDB
+						.createTable(createTableRequest).getTableDescription();
+				System.out.println("Created Table: " + createdTableDescription);
 
+				// Wait for it to become active
+				System.out.println("Waiting for " + tableName
+						+ " to become ACTIVE...");
+				Tables.waitForTableToBecomeActive(dynamoDB, tableName);
 			}
+			Map<String, AttributeValue> item = newItem(ticker, price,
+					tradeDate, tradeTime, open);
+			PutItemRequest putItemRequest = new PutItemRequest(tableName, item);
+			PutItemResult putItemResult = dynamoDB.putItem(putItemRequest);
+			System.out.println("Result: " + putItemResult);
 
-			catch (AmazonServiceException ase) {
-				System.out
-						.println("Caught an AmazonServiceException, which means your request made it "
-								+ "to AWS, but was rejected with an error response for some reason.");
-				System.out.println("Error Message:    " + ase.getMessage());
-				System.out.println("HTTP Status Code: " + ase.getStatusCode());
-				System.out.println("AWS Error Code:   " + ase.getErrorCode());
-				System.out.println("Error Type:       " + ase.getErrorType());
-				System.out.println("Request ID:       " + ase.getRequestId());
-			} catch (AmazonClientException ace) {
-				System.out
-						.println("Caught an AmazonClientException, which means the client encountered "
-								+ "a serious internal problem while trying to communicate with AWS, "
-								+ "such as not being able to access the network.");
-				System.out.println("Error Message: " + ace.getMessage());
-			}// try over
+		}
 
-			i++;
-		}// whileover
+		catch (AmazonServiceException ase) {
+			System.out
+					.println("Caught an AmazonServiceException, which means your request made it "
+							+ "to AWS, but was rejected with an error response for some reason.");
+			System.out.println("Error Message:    " + ase.getMessage());
+			System.out.println("HTTP Status Code: " + ase.getStatusCode());
+			System.out.println("AWS Error Code:   " + ase.getErrorCode());
+			System.out.println("Error Type:       " + ase.getErrorType());
+			System.out.println("Request ID:       " + ase.getRequestId());
+		} catch (AmazonClientException ace) {
+			System.out
+					.println("Caught an AmazonClientException, which means the client encountered "
+							+ "a serious internal problem while trying to communicate with AWS, "
+							+ "such as not being able to access the network.");
+			System.out.println("Error Message: " + ace.getMessage());
+		}// try over
 
 		inStream.close();
 		buff.close();
 
-	}// main over
+	}//
 
 	private static Map<String, AttributeValue> newItem(String ticker,
 			String price, String tradeDate, String tradeTime, String open) {

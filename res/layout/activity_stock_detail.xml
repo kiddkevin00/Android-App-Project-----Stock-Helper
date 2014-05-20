@@ -35,10 +35,10 @@
         android:orientation="horizontal" >
         <TextView
             android:id="@+id/price"
-            android:layout_width="100dp"
+            android:layout_width="142dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:text=" Price : "
+            android:text=" Current Price : "
             android:textColor="#083044"
             android:textSize="20sp" />
         <TextView
@@ -56,15 +56,15 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal" >
         <TextView
-            android:id="@+id/detail1"
-            android:layout_width="100dp"
+            android:id="@+id/updateTime "
+            android:layout_width="142dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:text=" Detail1 : "
+            android:text=" Update Time : "
             android:textColor="#083044"
             android:textSize="20sp" />
         <TextView
-            android:id="@+id/detailResult1"
+            android:id="@+id/updateTimeResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -78,15 +78,15 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal" >
         <TextView
-            android:id="@+id/detail2"
-            android:layout_width="100dp"
+            android:id="@+id/openPrice"
+            android:layout_width="142dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:text=" Detail2 : "
+            android:text=" Open Price : "
             android:textColor="#083044"
             android:textSize="20sp" />
         <TextView
-            android:id="@+id/detailResult2"
+            android:id="@+id/openPriceResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -96,8 +96,45 @@
     <LinearLayout
         android:id="@+id/layout5"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Note that the following result is based on Normal Linear Regression Algorithm"
+            android:textColor="#083044"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/predictPrice"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text=" Predict Price : "
+            android:textColor="#083044"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/predictPriceResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textColor="#083044"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout6"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
         <Button
             android:id="@+id/addBookmark"
@@ -113,10 +150,10 @@
             android:text="Delete" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/layout6"
+        android:id="@+id/layout7"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal" >
         <Button
             android:id="@+id/findThread"

@@ -1,8 +1,5 @@
 package com.example.coolstocktool;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.R.integer;
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.stockcloud.searchstock;
-import com.stockcloud.updatestock;
+import com.stockcloud.Test;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -29,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
 
 	// for testing
 	public test tt;
-	public TextView _test;
+	// public TextView _test;
 
 	public String email;
 	public String password;
@@ -42,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
 		_context = this;
 		_email = (TextView) findViewById(R.id.ueserID);
 		_password = (TextView) findViewById(R.id.password);
-		_test = (TextView) findViewById(R.id.test);
+		// _test = (TextView) findViewById(R.id.test);
 		_toBookmark = (Button) findViewById(R.id.toBM);
 
 		_toBookmark.setOnClickListener(new OnClickListener() {
@@ -69,8 +65,8 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 
-		tt = new test();
-		tt.execute("nothing");
+		// tt = new test();
+		// tt.execute("nothing");
 	}
 
 	@Override
@@ -94,42 +90,42 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	// for testing
-	private class test extends AsyncTask<String, integer, List<String>> {
+	private class test extends AsyncTask<String, integer, String> {
 
 		@Override
-		protected List<String> doInBackground(String... v) {
+		protected String doInBackground(String... v) {
 
 			Log.d("***", "String: " + v[0]);
-			updatestock updatest = new updatestock();
-			searchstock searchst = new searchstock();
 			Log.d("***", "testingg");
-			List<String> success = new ArrayList<String>();
+			Test t = new Test();
 			try {
-				Log.d("****", "wow");
-				// updatest.update();
-				Log.d("***", "wow3 : " + searchst.search("ABT").get(0)
-						+ searchst.search("ABT").get(1)
-						+ searchst.search("ABT").get(2));
-				success = new ArrayList<String>();
-				success = searchst.search("ABT");
+				t.testing();
 			} catch (Exception e) {
-				success.add("error!!");
-				Log.d("****", "wow2");
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			return success;
+			String successString = "cool";
+			try {
+				Log.d("***", "test result : ");
+
+			} catch (Exception e1) {
+				successString = "fail!";
+				Log.d("****", "wow2");
+				e1.printStackTrace();
+
+			}
+
+			return successString;
 
 		}
 
 		@Override
-		protected void onPostExecute(List<String> result) {
+		protected void onPostExecute(String result) {
 
 			if (result != null) {
-				Log.d("*****", "onpost result2: " + result.size());
-				_test.setText("Update Time : " + result.get(0)
-						+ "  Open price : " + result.get(1)
-						+ "  Current price : " + result.get(2));
+				Log.d("*****", "onpost result2: " + result);
+				// _test.setText("Update: " + result);
 			} else {
 				Log.d("**", "fail");
 			}
