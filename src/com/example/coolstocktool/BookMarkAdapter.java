@@ -41,7 +41,7 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 		this._context = (Activity) context;
 		// get data
 		data = (ArrayList<String>) objects;
-		Log.d("***", "data from bookmark: " + data.get(0));
+		// Log.d("***", "data from bookmark: " + data.get(0));
 	}
 
 	@Override

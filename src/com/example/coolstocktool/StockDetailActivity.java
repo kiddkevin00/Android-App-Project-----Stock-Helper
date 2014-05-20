@@ -26,6 +26,7 @@ public class StockDetailActivity extends ActionBarActivity {
 
 	private Button _addBookmark;
 	private Button _findThread;
+	private Button _deleteBookmark;
 	public Context _context;
 	public TextView _stockName;
 	public TextView _price;
@@ -40,6 +41,7 @@ public class StockDetailActivity extends ActionBarActivity {
 	public AddBookMarkAsyncTask addBookMarkAsync;
 	public StockDetailAsyncTask stockDetailAsync;
 	public StockPredictAsyncTask stockPredictAsync;
+	public DeleteBookMarkAsyncTask deleteBookMarkAsync;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class StockDetailActivity extends ActionBarActivity {
 		_updateTime = (TextView) findViewById(R.id.updateTimeResult);
 		_openPrice = (TextView) findViewById(R.id.openPriceResult);
 		_predictPrice = (TextView) findViewById(R.id.predictPriceResult);
+		_deleteBookmark = (Button) findViewById(R.id.delete);
 
 		Intent intent = getIntent();
 		stockName = intent.getStringExtra("stockName");
@@ -73,6 +76,20 @@ public class StockDetailActivity extends ActionBarActivity {
 				paras.add(stockName);
 				addBookMarkAsync = new AddBookMarkAsyncTask();
 				addBookMarkAsync.execute(paras);
+			}
+		});
+
+		_deleteBookmark.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				List<String> paras2 = new ArrayList<String>();
+				paras2.add(email);
+				paras2.add(password);
+				paras2.add(stockName);
+				deleteBookMarkAsync = new DeleteBookMarkAsyncTask();
+				deleteBookMarkAsync.execute(paras2);
 			}
 		});
 
@@ -124,7 +141,6 @@ public class StockDetailActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	// for testing
 	private class AddBookMarkAsyncTask extends
 			AsyncTask<List<String>, integer, String> {
 
@@ -164,7 +180,45 @@ public class StockDetailActivity extends ActionBarActivity {
 		}
 	}
 
-	// for testing
+	private class DeleteBookMarkAsyncTask extends
+			AsyncTask<List<String>, integer, String> {
+
+		@Override
+		protected String doInBackground(List<String>... v) {
+
+			Log.d("***", "Input9: " + v[0].get(0) + v[0].get(1) + v[0].get(2));
+			usr = new User();
+			try {
+				Log.d("***",
+						"User retrieve : "
+								+ usr.retrieveUser(v[0].get(0), v[0].get(1)));
+
+				if (usr.retrieveUser(v[0].get(0), v[0].get(1)) != null) {
+					usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
+				} else {
+					usr = usr.retrieveUser("123", "123");
+				}
+				usr.deleteFavorite(v[0].get(2));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return "okay";
+		}
+
+		// for getView method
+		@Override
+		protected void onPostExecute(String result) {
+
+			if (result != null) {
+				Log.d("*****", "onpost result9: " + result);
+
+			} else {
+
+			}
+		}
+	}
+
 	private class StockDetailAsyncTask extends
 			AsyncTask<String, integer, List<String>> {
 

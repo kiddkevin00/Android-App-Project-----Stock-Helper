@@ -96,20 +96,19 @@ public class BookMarkListActivity extends ActionBarActivity {
 	// context.startActivity(intent);
 	// }
 
-	// for testing
 	private class BookmarkAsyncTask extends
 			AsyncTask<List<String>, integer, List<String>> {
 
 		@Override
 		protected List<String> doInBackground(List<String>... v) {
 
-			Log.d("***", "Input: " + v[0].get(0) + v[0].get(1));
+			Log.d("***", "Input001: " + v[0].get(0) + v[0].get(1));
 			usr = new User();
 			List<String> usrBmList = new ArrayList<String>();
 			try {
-				Log.d("***",
-						"User retrieve : "
-								+ usr.retrieveUser(v[0].get(0), v[0].get(1)));
+				// Log.d("***",
+				// "User retrieve001 : "
+				// + usr.retrieveUser(v[0].get(0), v[0].get(1)));
 
 				if (usr.retrieveUser(v[0].get(0), v[0].get(1)) != null) {
 					usr = usr.retrieveUser(v[0].get(0), v[0].get(1));
@@ -147,6 +146,7 @@ public class BookMarkListActivity extends ActionBarActivity {
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				Log.d("***", "error!!");
 				e.printStackTrace();
 			}
 			return usrBmList;
