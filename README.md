@@ -32,5 +32,5 @@ https://www.youtube.com/watch?v=tR6mGoPRgAo&feature=youtu.be
 - Accelerate Server data computation
 
 ## How to run it
-Simply clone the project to local repository. After enter AWS credential including Secret Key and Access Key in '''AwsCredentials.properties''', then run it either on simulator or any Android device. 
+Simply clone the project to local repository. After enter AWS credential including Secret Key and Access Key in ```AwsCredentials.properties```, then run it either on simulator or any Android device. 
 
