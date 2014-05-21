@@ -1,4 +1,4 @@
-Stock Helper
+Android-App: Stock Helper (CoolStockTool)
 ============
 
 ## Demo video:
