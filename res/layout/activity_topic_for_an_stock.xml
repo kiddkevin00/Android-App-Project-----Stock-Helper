@@ -3,6 +3,7 @@
     android:id="@+id/activity_topic_for_an_stock"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context="com.example.coolstocktool.TopicForAnStockActivity"
     tools:ignore="MergeRootFrame" >
     <LinearLayout

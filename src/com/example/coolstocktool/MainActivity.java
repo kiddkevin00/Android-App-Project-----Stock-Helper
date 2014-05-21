@@ -124,7 +124,7 @@ public class MainActivity extends ActionBarActivity {
 		protected void onPostExecute(String result) {
 
 			if (result != null) {
-				Log.d("*****", "onpost result2: " + result);
+				Log.d("*****", "onpost result101: " + result);
 				// _test.setText("Update: " + result);
 			} else {
 				Log.d("**", "fail");

@@ -61,7 +61,7 @@ public class BookMarkAdapter extends ArrayAdapter<String> implements
 		item = (LayoutForm) row.getTag();
 
 		String stockName = data.get(position);
-		Log.d("***", "text: " + stockName);
+		// Log.d("***", "text: " + stockName);
 		item._stockName.setText(stockName);
 
 		return row;

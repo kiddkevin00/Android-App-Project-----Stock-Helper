@@ -31,7 +31,7 @@ public class SearchStockActivity extends ActionBarActivity {
 		_searchStockName = (EditText) findViewById(R.id.searchStockName);
 		_searchStockButton = (Button) findViewById(R.id.searchStock);
 
-		_searchStockName.setText("ABT");
+		// _searchStockName.setText("ABT");
 
 		Intent intent2 = getIntent();
 		email = intent2.getStringExtra("email");

@@ -276,7 +276,7 @@ public class StockDetailActivity extends ActionBarActivity {
 			String successString;
 			try {
 				Log.d("***", "test result : ");
-				success = update_30.update_30("ABT");
+				success = update_30.update_30(v[0]);
 				successString = Integer.toString(success);
 			} catch (Exception e1) {
 				successString = "fail!";

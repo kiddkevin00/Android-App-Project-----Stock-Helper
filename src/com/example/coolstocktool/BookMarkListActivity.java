@@ -128,7 +128,9 @@ public class BookMarkListActivity extends ActionBarActivity {
 					Log.d("***", "user's BM list: " + usrBmList);
 
 				} else {
-					usr = usr.retrieveUser("123", "123");
+					//
+					usr = usr.retrieveUser("DEFAULT_USER_ID",
+							"DEFAULT_USER_PASSWORD");
 					if (usr.listFavorites() != null) {
 						Log.d("***",
 								"Size2 : "

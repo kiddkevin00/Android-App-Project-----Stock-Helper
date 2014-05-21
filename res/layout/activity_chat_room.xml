@@ -3,6 +3,7 @@
     android:id="@+id/activity_chat_room"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context="com.example.coolstocktool.ChatRoomActivity"
     tools:ignore="MergeRootFrame" >
     <LinearLayout
@@ -22,7 +23,7 @@
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="365dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp" >

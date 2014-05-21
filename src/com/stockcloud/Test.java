@@ -39,32 +39,39 @@ public class Test {
 		 */
 
 		// Test ChatTopic.java
-
-		String DEFAULT_STOCK = "ABT";
+		String DEFAULT_STOCK = "BLK";
 		ChatTopic ct = new ChatTopic(DEFAULT_STOCK);
 
 		// ct.topicStockCodeName = DEFAULT_STOCK;
 
 		String POSTER1 = "123";
-		ThreadBody tb1 = ct.addThreadToTopic("buy ASAP",
+		ThreadBody tb1 = ct.addThreadToTopic("Buy ASAP",
 				"The FIrst Text Thread", POSTER1);
 		String POSTER2 = "jethro@hotmail.com";
 		ThreadBody tb2 = ct.addThreadToTopic("Check it out",
 				"The second Text Thread", POSTER2);
 
-		ThreadReply tb1tr1 = tb1.addReplyToThread(
-				"The 1st text reply in thread 1", POSTER2, 0);
-		ThreadReply tb1tr2 = tb1.addReplyToThread(
-				"The 2 text reply in thread 1", POSTER1, 0);
-		ThreadReply tb1tr3 = tb1.addReplyToThread(
-				"The 3rd text reply in thread 1", POSTER2, 2);
+		ThreadReply tb1tr1 = tb1.addReplyToThread("Agree!!", POSTER2, 1);
+		ThreadReply tb1tr2 = tb1.addReplyToThread("I don't think so!!",
+				POSTER1, 1);
+		ThreadReply tb1tr3 = tb1.addReplyToThread("It need to think twice..",
+				POSTER2, 2);
+		ThreadReply tb1tr4 = tb1.addReplyToThread("Omm...", POSTER1, 1);
+		ThreadReply tb1tr5 = tb1.addReplyToThread("I have no idea..", POSTER2,
+				2);
+		ThreadReply tb1tr6 = tb1.addReplyToThread("It seems like a trck!!",
+				POSTER2, 5);
+		ThreadReply tb1tr7 = tb1.addReplyToThread(
+				"I don't trust the inf about this company..", POSTER1, 5);
+		ThreadReply tb1tr8 = tb1.addReplyToThread("Me either!!", POSTER2, 2);
+		ThreadReply tb1tr9 = tb1.addReplyToThread("True!!", POSTER1, 5);
 
-		tb1tr3.upVote();
-		tb1tr3.upVote();
+		tb1tr1.upVote();
+		tb1tr2.upVote();
 		tb1tr3.downVote();
-		tb1tr3.downVote();
-		tb1tr3.downVote();
-		tb1tr3.downVote();
+		tb1tr4.downVote();
+		tb1tr4.downVote();
+		tb1tr7.downVote();
 		ct.print();
 		System.out.println("=============================================");
 		tb1.print();
