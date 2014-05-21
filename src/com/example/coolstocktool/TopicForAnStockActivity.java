@@ -99,7 +99,7 @@ public class TopicForAnStockActivity extends ActionBarActivity {
 
 				// 2. Chain together various setter methods to set the dialog
 				// characteristics
-				builder.setTitle("Partner Finding..");
+				builder.setTitle("Add a new topic..");
 
 				// 3. setView in the middle of dialog
 				LayoutInflater inflater = getLayoutInflater();
