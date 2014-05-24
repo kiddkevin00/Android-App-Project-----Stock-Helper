@@ -1,6 +1,8 @@
 package com.example.coolstocktool;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import android.R.integer;
@@ -250,10 +252,16 @@ public class StockDetailActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(List<String> result) {
 
+			Calendar c = Calendar.getInstance();
+			System.out.println("Current time => " + c.getTime());
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String formattedDate = df.format(c.getTime());
+
 			if (result != null) {
 				Log.d("*****", "onpost result8: " + result.size());
 				_price.setText(result.get(2));
-				_updateTime.setText(result.get(0));
+				// _updateTime.setText(result.get(0));
+				_updateTime.setText(formattedDate);
 				_openPrice.setText(result.get(1));
 
 			} else {
@@ -270,17 +278,18 @@ public class StockDetailActivity extends ActionBarActivity {
 		protected String doInBackground(String... v) {
 
 			Log.d("***", "String: " + v[0]);
-			Log.d("***", "testingg");
 			update30 update_30 = new update30();
+			Log.d("***", "testingg: " + update_30);
 			int success;
 			String successString;
 			try {
 				Log.d("***", "test result : ");
 				success = update_30.update_30(v[0]);
+				Log.d("***", "Prediction int : " + success);
 				successString = Integer.toString(success);
+				Log.d("***", "Predict: " + successString);
 			} catch (Exception e1) {
 				successString = "fail!";
-				Log.d("****", "wow2");
 				e1.printStackTrace();
 
 			}
