@@ -3,6 +3,7 @@ package com.example.coolstocktool;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R;
 import android.R.integer;
 import android.content.Context;
 import android.content.Intent;
